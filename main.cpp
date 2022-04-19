@@ -2,7 +2,10 @@
 #include <list>
 #include "cliente.h"
 #include "filme.h"
+#include "util.h"
 #include <string.h>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 void adicionarLivro();
@@ -32,6 +35,22 @@ int menuAcervo()
     return opcao;
 }
 
+void listarAcervo()
+{
+    for (Filme const &i : filmes)
+    {
+        string titulo = "   Titulo: ";
+        string genero = "   Gênero: ";
+        string valorLocacao = "   Valor da Locação: R$";
+
+        std::cout << "╭──────────────────────────╮ " << std::endl;
+        std::cout << titulo + i.titulo << std::endl;
+        std::cout << genero + i.genero << std::endl;
+        std::cout << valorLocacao + to_string(i.valorLocacao)<< std::endl;
+        std::cout << "╰──────────────────────────╯ " << std::endl;
+    }
+}
+
 int menuCliente()
 {
     int opcao;
@@ -43,7 +62,8 @@ int menuCliente()
     return opcao;
 }
 
-void preecherLista(){
+void preecherLista()
+{
     Filme filme;
     strcpy(filme.titulo, "Kairo O Filme");
     strcpy(filme.genero, "Kairo Amorim");
@@ -62,24 +82,28 @@ int main()
 {
     int opcao = 1;
     preecherLista();
- 
-    
+
     while (true)
     {
         opcao = menu();
-        
-        struct livros;
 
         if (opcao == 1)
         {
             std::cout << "Size of the list<Filme>: " << int(filmes.size()) << '\n';
-            menuAcervo();
-            
-            if (opcao == 2)
+            switch (menuAcervo())
             {
-            	// adicionar(livros);
-            	// printf(livros.titulo);
-            	
+            case 1:
+                listarAcervo();
+                break;
+
+            case 2:
+                // adicionar(livros);
+                // printf(livros.titulo);
+                /* code */
+                break;
+
+            default:
+                break;
             }
         }
 
@@ -94,14 +118,10 @@ int main()
             break;
         }
     }
-    
-    
 }
 
-void adicionar(){
-	printf("\nDigite o titulo do filme: ");
-	// scanf("%s", livros.titulo);
+void adicionar()
+{
+    printf("\nDigite o titulo do filme: ");
+    // scanf("%s", livros.titulo);
 }
-
-
-
