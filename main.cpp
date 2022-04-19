@@ -8,8 +8,8 @@
 #include <algorithm>
 using namespace std;
 
-void adicionarLivro();
-void excluirLivro();
+void adicionarFilme();
+void excluirFilme();
 
 list<Filme> filmes;
 
@@ -28,7 +28,7 @@ int menuAcervo()
 {
     int opcao;
 
-    std::cout << "\n===Acervo===\n\n1. Listar Livros\n2. Cadastrar Livros\n3. Editar Livros\n4. Excluir Livros\n0. Voltar\n\nDigite uma opção: " << std::endl;
+    std::cout << "\n===Acervo===\n\n1. Listar Filmes\n2. Cadastrar Filmes\n3. Editar Filmes\n4. Excluir Filmes\n0. Voltar\n\nDigite uma opção: " << std::endl;
 
     std::cin >> opcao;
 
@@ -61,6 +61,31 @@ int menuCliente()
 
     return opcao;
 }
+
+void cadastrarFilme(){
+    printf("Bobão cadstro\n");
+    Filme filme;
+    std::cout << "Digite o nome do filme: ";
+    string tituloFilme = "";
+    cin >> tituloFilme;
+    std::cout << "Digite o genero do filme: ";
+    string generoFilme = "";
+    cin >> generoFilme;
+    std::cout << "Digite o valor de locação do filme: ";
+    int valorFilme = 0;
+    cin >> valorFilme;
+  
+    strcpy(filme.titulo, tituloFilme.c_str());
+    strcpy(filme.genero, generoFilme.c_str());
+    filme.valorLocacao = valorFilme;
+
+    std::cout << filme.titulo << std::endl;
+    std::cout << filme.genero << std::endl;
+    std::cout << filme.valorLocacao << std::endl;
+
+    filmes.push_front(filme);
+}
+
 
 void preecherLista()
 {
@@ -97,9 +122,7 @@ int main()
                 break;
 
             case 2:
-                // adicionar(livros);
-                // printf(livros.titulo);
-                /* code */
+                cadastrarFilme();
                 break;
 
             default:
@@ -123,5 +146,5 @@ int main()
 void adicionar()
 {
     printf("\nDigite o titulo do filme: ");
-    // scanf("%s", livros.titulo);
+    // scanf("%s", Filmes.titulo);
 }
