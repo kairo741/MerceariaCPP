@@ -1,23 +1,8 @@
 #include <iostream>
 #include <list>
+#include "cliente.h"
+#include "filme.h"
 
-struct livros
-{
-char nome[20];
-char autor[25];
-char editora[30];
-int quantidade[3];
-
-};
-
-struct cliente
-{
-char nome[20];
-int idade[2];
-int numero[11];
-char a[1];
-
-};
 
 void adicionarLivro();
 void excluirLivro();

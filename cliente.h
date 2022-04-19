@@ -1,7 +1,7 @@
 #ifndef _arquivo_cliente_h_
 #define _arquivo_cliente_h_
 
-struct cliente
+struct Cliente
 {
 char nome[20];
 int idade[2];
