@@ -2,10 +2,13 @@
 #include <list>
 #include "cliente.h"
 #include "filme.h"
-
+#include <string.h>
+using namespace std;
 
 void adicionarLivro();
 void excluirLivro();
+
+list<Filme> filmes;
 
 int menu()
 {
@@ -40,10 +43,25 @@ int menuCliente()
     return opcao;
 }
 
+void preecherLista(){
+    Filme filme;
+    strcpy(filme.titulo, "Kairo O Filme");
+    strcpy(filme.genero, "Kairo Amorim");
+    filme.valorLocacao = 15;
+
+    filmes.push_front(filme);
+    filmes.push_front(filme);
+    filmes.push_front(filme);
+    filmes.push_front(filme);
+    filmes.push_front(filme);
+    filmes.push_front(filme);
+    filmes.push_front(filme);
+}
+
 int main()
 {
     int opcao = 1;
-    
+    preecherLista();
  
     
     while (true)
@@ -54,12 +72,13 @@ int main()
 
         if (opcao == 1)
         {
+            std::cout << "Size of the list<Filme>: " << int(filmes.size()) << '\n';
             menuAcervo();
             
             if (opcao == 2)
             {
-            	adicionar(livros);
-            	printf(livros.nome);
+            	// adicionar(livros);
+            	// printf(livros.titulo);
             	
             }
         }
@@ -80,8 +99,8 @@ int main()
 }
 
 void adicionar(){
-	printf("\nDigite o nome do livro: ");
-	scanf("%s", livros.nome);
+	printf("\nDigite o titulo do filme: ");
+	// scanf("%s", livros.titulo);
 }
 
 

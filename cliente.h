@@ -3,9 +3,9 @@
 
 struct Cliente
 {
-char nome[20];
-int idade[2];
-int numero[11];
+    int id;
+    char nome[20];
+    int idade[2];
 };
 
 #endif

@@ -3,10 +3,10 @@
 
 struct Filme
 {
-    char nome[20];
-    char autor[25];
-    char estudio[30];
-    int quantidade;
+    int id;
+    char titulo[20];
+    char genero[25];
+    int valorLocacao;
 };
 
 #endif
