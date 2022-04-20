@@ -1,27 +1,62 @@
 #include <iostream>
 #include <list>
-#include "cliente.h"
-#include "filme.h"
-#include "util.h"
-#include <string.h>
 #include <vector>
 #include <algorithm>
+#include <string.h>
+#include <windows.h>
+#include "cliente.h"
+#include "filme.h"
 using namespace std;
 
-#define linhasDeCima "╭──────────────────────────╮ "
-#define linhasDeBaixo "╰──────────────────────────╯ "
+#define linhasDeCima "\n╭──────────────────────────╮\n"
+#define linhasDeBaixo "\n╰──────────────────────────╯\n"
 
-void adicionarFilme();
-void excluirFilme();
+int idCounter = 0;
 
 list<Filme> filmes;
 list<Cliente> clientes;
+
+int getNextId()
+{
+    idCounter += 1;
+    return idCounter;
+}
+
+Cliente makeClienteTeste()
+{
+    Cliente cli;
+    cli.id = getNextId();
+    strcpy(cli.nome, "Cliente");
+    strcpy(cli.idade, "20");
+
+    return cli;
+}
+
+Filme makeFilmeTeste()
+{
+    Filme filme;
+    filme.id = getNextId();
+    strcpy(filme.titulo, "Kairo O Filme");
+    strcpy(filme.genero, "Kairo Amorim");
+    filme.valorLocacao = 15;
+
+    return filme;
+}
+
+void preencherListasTestes()
+{
+    filmes.push_front(makeFilmeTeste());
+    filmes.push_front(makeFilmeTeste());
+
+    clientes.push_front(makeClienteTeste());
+    clientes.push_front(makeClienteTeste());
+}
 
 int menu()
 {
     int opcao;
 
-    std::cout << "\n===Menu===\n\n1. Acervo\n2. Clientes\n0. Sair\n\nDigite uma opção: " << std::endl;
+    printf("\n===Menu===\n\n1. Acervo\n2. Clientes\n0. Sair\n\nDigite uma opção: ");
 
     std::cin >> opcao;
 
@@ -32,102 +67,72 @@ int menuAcervo()
 {
     int opcao;
 
-    std::cout << "\n===Acervo===\n\n1. Listar Filmes\n2. Cadastrar Filmes\n3. Editar Filmes\n4. Excluir Filmes\n0. Voltar\n\nDigite uma opção: " << std::endl;
+    printf("\n===Acervo===\n\n1. Listar Filmes\n2. Cadastrar Filmes\n3. Editar Filmes\n4. Excluir Filmes\n0. Voltar\n\nDigite uma opção: ");
 
     std::cin >> opcao;
 
     return opcao;
-}
-
-void listarAcervo()
-{
-    for (Filme const &i : filmes)
-    {
-        string titulo = "   Titulo: ";
-        string genero = "   Gênero: ";
-        string valorLocacao = "   Valor da Locação: R$";
-
-        std::cout << linhasDeCima << std::endl;
-        std::cout << titulo + i.titulo << std::endl;
-        std::cout << genero + i.genero << std::endl;
-        std::cout << valorLocacao + to_string(i.valorLocacao)<< std::endl;
-        std::cout << linhasDeBaixo << std::endl;
-    }
-}
-
-
-void listarCliente()
-{
-    for (Cliente const &i : clientes)
-    {
-        string id = "   Id: ";
-        string nome = "   Nome: ";
-        string idade = "   Idade: ";
-
-        std::cout << linhasDeCima << std::endl;
-        std::cout << id + to_string(i.id) << std::endl;
-        std::cout << nome + i.nome << std::endl;
-        std::cout << idade + i.idade << std::endl;
-        std::cout << linhasDeBaixo << std::endl;
-    }
 }
 
 int menuCliente()
 {
     int opcao;
 
-    std::cout << "\n===Cliente===\n\n1. Listar Cliente\n2. Cadastrar Cliente\n3. Editar Cliente\n4. Excluir Cliente\n0. Voltar\n\nDigite uma opção: " << std::endl;
+    printf("\n===Cliente===\n\n1. Listar Cliente\n2. Cadastrar Cliente\n3. Editar Cliente\n4. Excluir Cliente\n0. Voltar\n\nDigite uma opção: ");
 
-    std::cin >> opcao;
+    scanf("%d", &opcao);
 
     return opcao;
 }
 
-void cadastrarFilme(){
-    printf("Bobão cadstro\n");
-    Filme filme;
-    std::cout << "Digite o nome do filme: ";
-    string tituloFilme = "";
-    cin >> tituloFilme;
-    std::cout << "Digite o genero do filme: ";
-    string generoFilme = "";
-    cin >> generoFilme;
-    std::cout << "Digite o valor de locação do filme: ";
-    int valorFilme = 0;
-    cin >> valorFilme;
-  
-    strcpy(filme.titulo, tituloFilme.c_str());
-    strcpy(filme.genero, generoFilme.c_str());
-    filme.valorLocacao = valorFilme;
+void listarAcervo()
+{
+    for (Filme const &fm : filmes)
+    {
+        printf(linhasDeCima);
+        printf("   Id: %d\n", fm.id);
+        printf("   Titulo:  %s\n", fm.titulo);
+        printf("   Gênero:  %s\n", fm.genero);
+        printf("   Valor da Locação: R$%d", fm.valorLocacao);
+        printf(linhasDeBaixo);
+    }
+}
 
-    std::cout << filme.titulo << std::endl;
-    std::cout << filme.genero << std::endl;
-    std::cout << filme.valorLocacao << std::endl;
+void cadastrarFilme()
+{
+    Filme filme;
+
+    filme.id = getNextId();
+
+    printf("Digite o nome do filme: ");
+    scanf("%s", &filme.titulo);
+    printf("Digite o genero do filme: ");
+    scanf("%s", &filme.genero);
+    printf("Digite o valor de locação do filme: ");
+    scanf("%d", &filme.valorLocacao);
 
     filmes.push_front(filme);
 }
 
-
-void preecherLista()
+void listarCliente()
 {
-    Filme filme;
-    strcpy(filme.titulo, "Kairo O Filme");
-    strcpy(filme.genero, "Kairo Amorim");
-    filme.valorLocacao = 15;
-
-    filmes.push_front(filme);
-    filmes.push_front(filme);
-    filmes.push_front(filme);
-    filmes.push_front(filme);
-    filmes.push_front(filme);
-    filmes.push_front(filme);
-    filmes.push_front(filme);
+    for (Cliente const &cli : clientes)
+    {
+        printf(linhasDeCima);
+        printf("   Id: %d\n", cli.id);
+        printf("   Nome: %s\n", cli.nome);
+        printf("   Idade: %s", cli.idade);
+        printf(linhasDeBaixo);
+    }
 }
 
 int main()
 {
+    // output em unicode
+    SetConsoleOutputCP(65001);
+
     int opcao = 1;
-    preecherLista();
+    preencherListasTestes();
 
     while (true)
     {
@@ -135,7 +140,6 @@ int main()
 
         if (opcao == 1)
         {
-            std::cout << "Size of the list<Filme>: " << int(filmes.size()) << '\n';
             switch (menuAcervo())
             {
             case 1:
@@ -164,10 +168,11 @@ int main()
 
             default:
                 break;
+            }
         }
-        
+        else if (opcao == 0)
+        {
+            break;
+        }
     }
 }
-}
-
-
