@@ -5,7 +5,7 @@ struct Cliente
 {
     int id;
     char nome[20];
-    int idade[2];
+    char idade[2];
 };
 
 #endif

@@ -15,6 +15,7 @@ void adicionarFilme();
 void excluirFilme();
 
 list<Filme> filmes;
+list<Cliente> clientes;
 
 int menu()
 {
@@ -57,16 +58,16 @@ void listarAcervo()
 
 void listarCliente()
 {
-    for (Cliente const &i : cliente)
+    for (Cliente const &i : clientes)
     {
-        string id = "   Id: "
+        string id = "   Id: ";
         string nome = "   Nome: ";
         string idade = "   Idade: ";
 
         std::cout << linhasDeCima << std::endl;
         std::cout << id + to_string(i.id) << std::endl;
         std::cout << nome + i.nome << std::endl;
-        std::cout << idade + to_string(i.idade) << std::endl;
+        std::cout << idade + i.idade << std::endl;
         std::cout << linhasDeBaixo << std::endl;
     }
 }
@@ -167,9 +168,6 @@ int main()
         
     }
 }
-
-void adicionar()
-{
-    printf("\nDigite o titulo do filme: ");
-    // scanf("%s", Filmes.titulo);
 }
+
+
