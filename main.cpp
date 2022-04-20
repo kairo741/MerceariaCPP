@@ -8,6 +8,9 @@
 #include <algorithm>
 using namespace std;
 
+#define linhasDeCima "╭──────────────────────────╮ "
+#define linhasDeBaixo "╰──────────────────────────╯ "
+
 void adicionarFilme();
 void excluirFilme();
 
@@ -43,11 +46,28 @@ void listarAcervo()
         string genero = "   Gênero: ";
         string valorLocacao = "   Valor da Locação: R$";
 
-        std::cout << "╭──────────────────────────╮ " << std::endl;
+        std::cout << linhasDeCima << std::endl;
         std::cout << titulo + i.titulo << std::endl;
         std::cout << genero + i.genero << std::endl;
         std::cout << valorLocacao + to_string(i.valorLocacao)<< std::endl;
-        std::cout << "╰──────────────────────────╯ " << std::endl;
+        std::cout << linhasDeBaixo << std::endl;
+    }
+}
+
+
+void listarCliente()
+{
+    for (Cliente const &i : cliente)
+    {
+        string id = "   Id: "
+        string nome = "   Nome: ";
+        string idade = "   Idade: ";
+
+        std::cout << linhasDeCima << std::endl;
+        std::cout << id + to_string(i.id) << std::endl;
+        std::cout << nome + i.nome << std::endl;
+        std::cout << idade + to_string(i.idade) << std::endl;
+        std::cout << linhasDeBaixo << std::endl;
     }
 }
 
@@ -132,14 +152,19 @@ int main()
 
         else if (opcao == 2)
         {
-            menuCliente();
-        }
+            switch (menuCliente())
+            {
+            case 1:
+                listarCliente();
+                break;
 
-        else if (opcao == 0)
-        {
-            std::cout << "Saindo..." << std::endl;
-            break;
+            case 2:
+                break;
+
+            default:
+                break;
         }
+        
     }
 }
 
