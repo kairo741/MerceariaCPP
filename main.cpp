@@ -134,6 +134,18 @@ void cadastrarCliente(){
     clientes.push_front(cli);
 }
 
+void listarLocacao()
+{
+    for (Locacao const &lc : locacoes)
+    {
+        printf(linhasDeCima);
+        printf("|   Id: %d\n", lc.id);
+        printf("|   Cliente:  %s\n", lc.cliente.nome);
+        printf("|   Filme:  %s", lc.filme.titulo);
+        printf(linhasDeBaixo);
+    }
+}
+
 void listarAcervo()
 {
     for (Filme const &fm : filmes)
@@ -182,6 +194,7 @@ int main()
                     default:
                         break;
                 }
+                break;
             case 2:
                 switch (menuCliente())
                 {
@@ -196,12 +209,15 @@ int main()
                     default:
                         break;
                 }
+                break;
             case 3:
                 listarLocacao();
+                break;
             case 0:
                 goto exit_loop;
             default:
                 goto exit_loop;
+                break;
         }
     }
     exit_loop: ;
