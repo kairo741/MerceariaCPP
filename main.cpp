@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <string.h>
-#include <windows.h>
+// #include <windows.h>
 #include "cliente.h"
 #include "filme.h"
 using namespace std;
@@ -21,6 +21,7 @@ int getNextId()
     idCounter += 1;
     return idCounter;
 }
+
 
 Cliente makeClienteTeste()
 {
@@ -85,6 +86,36 @@ int menuCliente()
     return opcao;
 }
 
+void cadastrarFilme()
+{
+    Filme filme;
+
+    filme.id = getNextId();
+
+    printf("Digite o nome do filme: ");
+    scanf("%s", filme.titulo);
+    printf("Digite o genero do filme: ");
+    scanf("%s", filme.genero);
+    printf("Digite o valor de locação do filme: ");
+    scanf("%d", &filme.valorLocacao);
+
+    filmes.push_front(filme);
+}
+
+void cadastrarCliente(){
+
+    Cliente cli;
+
+    cli.id = getNextId();
+
+    printf("Digite o nome do cliente: ");
+    scanf("%s", cli.nome);
+    printf("Digite a idade do cliente: ");
+    scanf("%s", cli.idade);
+
+    clientes.push_front(cli);
+}
+
 void listarAcervo()
 {
     for (Filme const &fm : filmes)
@@ -96,22 +127,6 @@ void listarAcervo()
         printf("   Valor da Locação: R$%d", fm.valorLocacao);
         printf(linhasDeBaixo);
     }
-}
-
-void cadastrarFilme()
-{
-    Filme filme;
-
-    filme.id = getNextId();
-
-    printf("Digite o nome do filme: ");
-    scanf("%s", &filme.titulo);
-    printf("Digite o genero do filme: ");
-    scanf("%s", &filme.genero);
-    printf("Digite o valor de locação do filme: ");
-    scanf("%d", &filme.valorLocacao);
-
-    filmes.push_front(filme);
 }
 
 void listarCliente()
@@ -129,7 +144,7 @@ void listarCliente()
 int main()
 {
     // output em unicode
-    SetConsoleOutputCP(65001);
+    // SetConsoleOutputCP(65001);
 
     int opcao = 1;
     preencherListasTestes();
@@ -164,6 +179,7 @@ int main()
                 break;
 
             case 2:
+                cadastrarCliente();
                 break;
 
             default:
