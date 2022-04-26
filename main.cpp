@@ -6,6 +6,7 @@
 #include <windows.h>
 #include "cliente.h"
 #include "filme.h"
+#include "locacao.h"
 using namespace std;
 
 #define linhasDeCima "\n╭──────────────────────────╮\n"
@@ -15,6 +16,7 @@ int idCounter = 0;
 
 list<Filme> filmes;
 list<Cliente> clientes;
+list<Locacao> locacoes;
 
 int getNextId()
 {
@@ -30,6 +32,18 @@ Cliente makeClienteTeste()
     strcpy(cli.idade, "20");
 
     return cli;
+}
+
+Locacao makeLocacaoTeste(int position)
+{
+    Locacao locacao{};
+    locacao.id = getNextId();
+    auto clientePosition = std::next(clientes.begin(), position);
+    locacao.cliente = *clientePosition;
+    auto filmePosition = std::next(filmes.begin(), position);
+    locacao.filme = *filmePosition;
+
+    return locacao;
 }
 
 Filme makeFilmeTeste()
@@ -50,13 +64,17 @@ void preencherListasTestes()
 
     clientes.push_front(makeClienteTeste());
     clientes.push_front(makeClienteTeste());
+
+    locacoes.push_front(makeLocacaoTeste(0));
+    locacoes.push_front(makeLocacaoTeste(1));
+
 }
 
 int menu()
 {
     int opcao;
 
-    printf("\n===Menu===\n\n1. Acervo\n2. Clientes\n0. Sair\n\nDigite uma opção: ");
+    printf("\n===Menu===\n\n1. Acervo\n2. Clientes\n3. Filmes locados\n0. Sair\n\nDigite uma opção: \t");
 
     std::cin >> opcao;
 
@@ -98,6 +116,18 @@ void listarAcervo()
     }
 }
 
+void listarLocacao()
+{
+    for (Locacao const &lc : locacoes)
+    {
+        printf(linhasDeCima);
+        printf("|   Id: %d\n", lc.id);
+        printf("|   Cliente:  %s\n", lc.cliente.nome);
+        printf("|   Filme:  %s", lc.filme.titulo);
+        printf(linhasDeBaixo);
+    }
+}
+
 void cadastrarFilme()
 {
     Filme filme;
@@ -130,49 +160,45 @@ int main()
 {
     // output em unicode
     SetConsoleOutputCP(65001);
-
-    int opcao = 1;
     preencherListasTestes();
 
     while (true)
     {
-        opcao = menu();
-
-        if (opcao == 1)
-        {
-            switch (menuAcervo())
-            {
+        switch (menu()) {
             case 1:
-                listarAcervo();
-                break;
+                switch (menuAcervo())
+                {
+                    case 1:
+                        listarAcervo();
+                        break;
 
+                    case 2:
+                        cadastrarFilme();
+                        break;
+
+                    default:
+                        break;
+                }
             case 2:
-                cadastrarFilme();
-                break;
+                switch (menuCliente())
+                {
+                    case 1:
+                        listarCliente();
+                        break;
 
+                    case 2:
+                        break;
+
+                    default:
+                        break;
+                }
+            case 3:
+                listarLocacao();
+            case 0:
+                goto exit_loop;
             default:
-                break;
-            }
-        }
-
-        else if (opcao == 2)
-        {
-            switch (menuCliente())
-            {
-            case 1:
-                listarCliente();
-                break;
-
-            case 2:
-                break;
-
-            default:
-                break;
-            }
-        }
-        else if (opcao == 0)
-        {
-            break;
+                goto exit_loop;
         }
     }
+    exit_loop: ;
 }
