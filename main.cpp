@@ -24,6 +24,7 @@ int getNextId()
     return idCounter;
 }
 
+
 Cliente makeClienteTeste()
 {
     Cliente cli;
@@ -103,6 +104,36 @@ int menuCliente()
     return opcao;
 }
 
+void cadastrarFilme()
+{
+    Filme filme;
+
+    filme.id = getNextId();
+
+    printf("Digite o nome do filme: ");
+    scanf("%s", filme.titulo);
+    printf("Digite o genero do filme: ");
+    scanf("%s", filme.genero);
+    printf("Digite o valor de locação do filme: ");
+    scanf("%d", &filme.valorLocacao);
+
+    filmes.push_front(filme);
+}
+
+void cadastrarCliente(){
+
+    Cliente cli;
+
+    cli.id = getNextId();
+
+    printf("Digite o nome do cliente: ");
+    scanf("%s", cli.nome);
+    printf("Digite a idade do cliente: ");
+    scanf("%s", cli.idade);
+
+    clientes.push_front(cli);
+}
+
 void listarAcervo()
 {
     for (Filme const &fm : filmes)
@@ -114,34 +145,6 @@ void listarAcervo()
         printf("   Valor da Locação: R$%d", fm.valorLocacao);
         printf(linhasDeBaixo);
     }
-}
-
-void listarLocacao()
-{
-    for (Locacao const &lc : locacoes)
-    {
-        printf(linhasDeCima);
-        printf("|   Id: %d\n", lc.id);
-        printf("|   Cliente:  %s\n", lc.cliente.nome);
-        printf("|   Filme:  %s", lc.filme.titulo);
-        printf(linhasDeBaixo);
-    }
-}
-
-void cadastrarFilme()
-{
-    Filme filme;
-
-    filme.id = getNextId();
-
-    printf("Digite o nome do filme: ");
-    scanf("%s", &filme.titulo);
-    printf("Digite o genero do filme: ");
-    scanf("%s", &filme.genero);
-    printf("Digite o valor de locação do filme: ");
-    scanf("%d", &filme.valorLocacao);
-
-    filmes.push_front(filme);
 }
 
 void listarCliente()
@@ -187,6 +190,7 @@ int main()
                         break;
 
                     case 2:
+                        cadastrarCliente();
                         break;
 
                     default:
