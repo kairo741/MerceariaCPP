@@ -85,6 +85,26 @@ void preencherListasTestes() {
 
 }
 
+void alterarFilme(){
+
+    Filme f;
+
+    int escolha;
+
+    printf("Escolha o filme que sera modificado pelo numero dele: ex: 1, 2, 3...");
+    scanf("%d", &escolha);
+
+    f = getFilmeById(escolha);
+
+    printf("Digite o nome do filme: ");
+    scanf("%s", &f.titulo);
+    printf("Digite o genero do filme: ");
+    scanf("%s", &f.genero);
+    printf("Digite o valor de locação do filme: ");
+    scanf("%d", &f.valorLocacao);
+   
+}
+
 int menu() {
     int opcao;
 
