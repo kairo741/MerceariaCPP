@@ -210,11 +210,19 @@ void locarFilme() {
     printf("Escolha um filme pelo ID: ");
     scanf("%d", &idFilme);
     locacao.filme = getFilmeById(idFilme);
+    if(!locacao.filme.id){
+        printf("Filme inexistente! ");
+        return;
+    }
 
     listarCliente();
     printf("Escolha um cliente pelo ID: ");
     scanf("%d", &idCliente);
     locacao.cliente = getClienteById(idCliente);
+    if(!locacao.cliente.id){
+        printf("Cliente inexistente! ");
+        return;
+    }
     printf("Filme locado! \n");
 }
 
