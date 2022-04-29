@@ -104,6 +104,17 @@ int menuCliente()
     return opcao;
 }
 
+int menuLocacoes()
+{
+    int opcao;
+    printf("\n===Locações===\n\n1.Locar um filme \n2.Deslocar um filme \n3. Listar Locados\n4.Listar Não Locados\n0. Voltar\n\nDigite uma opção: ");
+
+    scanf("%d", &opcao);
+
+    return opcao;
+
+}
+
 void cadastrarFilme()
 {
     Filme filme;
