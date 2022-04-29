@@ -4,9 +4,11 @@
 #include <algorithm>
 #include <string.h>
 #include <windows.h>
+#include <conio.h>
 #include "cliente.h"
 #include "filme.h"
 #include "locacao.h"
+#include <cstdlib>
 
 using namespace std;
 
@@ -22,6 +24,20 @@ list<Locacao> locacoes;
 int getNextId() {
     idCounter += 1;
     return idCounter;
+}
+
+void clear_screen()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system ("clear");
+#endif
+}
+
+void enterToContinue(){
+    printf("Pressione ENTER para continuar...");
+    getch();
 }
 
 
@@ -91,7 +107,7 @@ int menu() {
     printf("\n===Menu===\n\n1. Acervo\n2. Clientes\n3. Locação\n0. Sair\n\nDigite uma opção: \t");
 
     std::cin >> opcao;
-
+    clear_screen();
     return opcao;
 }
 
@@ -192,15 +208,14 @@ void locarFilme() {
 
     listarAcervo();
     printf("Escolha um filme pelo ID: ");
-    scanf("%d", idFilme);
+    scanf("%d", &idFilme);
     locacao.filme = getFilmeById(idFilme);
 
+    listarCliente();
     printf("Escolha um cliente pelo ID: ");
-    scanf("%d", idCliente);
+    scanf("%d", &idCliente);
     locacao.cliente = getClienteById(idCliente);
-
-    printf("Filme locado! ENTER para continuar...");
-    scanf("");
+    printf("Filme locado! \n");
 }
 
 int main() {
@@ -209,15 +224,18 @@ int main() {
     preencherListasTestes();
 
     while (true) {
+        clear_screen();
         switch (menu()) {
             case 1:
                 switch (menuAcervo()) {
                     case 1:
                         listarAcervo();
+                        enterToContinue();
                         break;
 
                     case 2:
                         cadastrarFilme();
+                        enterToContinue();
                         break;
 
                     default:
@@ -228,10 +246,12 @@ int main() {
                 switch (menuCliente()) {
                     case 1:
                         listarCliente();
+                        enterToContinue();
                         break;
 
                     case 2:
                         cadastrarCliente();
+                        enterToContinue();
                         break;
 
                     default:
@@ -242,9 +262,11 @@ int main() {
                 switch (menuLocacoes()) {
                     case 1:
                         listarLocacao();
+                        enterToContinue();
                         break;
                     case 2:
                         locarFilme();
+                        enterToContinue();
                         break;
                     default:
                         break;
