@@ -7,6 +7,7 @@
 #include "cliente.h"
 #include "filme.h"
 #include "locacao.h"
+
 using namespace std;
 
 #define linhasDeCima "\n╭──────────────────────────╮\n"
@@ -18,35 +19,31 @@ list<Filme> filmes;
 list<Cliente> clientes;
 list<Locacao> locacoes;
 
-int getNextId()
-{
+int getNextId() {
     idCounter += 1;
     return idCounter;
 }
 
 
-Filme getFilmeById(int id){
-    for (Filme const &f : filmes)
-    {
-        if (f.id == id){
+Filme getFilmeById(int id) {
+    for (Filme const &f: filmes) {
+        if (f.id == id) {
             return f;
         }
     }
     return Filme();
 }
 
-Cliente getClienteById(int id){
-    for (Cliente const &cli : clientes)
-    {
-        if (cli.id == id){
+Cliente getClienteById(int id) {
+    for (Cliente const &cli: clientes) {
+        if (cli.id == id) {
             return cli;
         }
     }
     return Cliente();
 }
 
-Cliente makeClienteTeste()
-{
+Cliente makeClienteTeste() {
     Cliente cli;
     cli.id = getNextId();
     strcpy(cli.nome, "Cliente");
@@ -55,8 +52,7 @@ Cliente makeClienteTeste()
     return cli;
 }
 
-Locacao makeLocacaoTeste(int position)
-{
+Locacao makeLocacaoTeste(int position) {
     Locacao locacao{};
     locacao.id = getNextId();
     auto clientePosition = std::next(clientes.begin(), position);
@@ -67,8 +63,7 @@ Locacao makeLocacaoTeste(int position)
     return locacao;
 }
 
-Filme makeFilmeTeste()
-{
+Filme makeFilmeTeste() {
     Filme filme;
     filme.id = getNextId();
     strcpy(filme.titulo, "Kairo O Filme");
@@ -78,8 +73,7 @@ Filme makeFilmeTeste()
     return filme;
 }
 
-void preencherListasTestes()
-{
+void preencherListasTestes() {
     filmes.push_front(makeFilmeTeste());
     filmes.push_front(makeFilmeTeste());
 
@@ -91,19 +85,17 @@ void preencherListasTestes()
 
 }
 
-int menu()
-{
+int menu() {
     int opcao;
 
-    printf("\n===Menu===\n\n1. Acervo\n2. Clientes\n3. Filmes locados\n0. Sair\n\nDigite uma opção: \t");
+    printf("\n===Menu===\n\n1. Acervo\n2. Clientes\n3. Locação\n0. Sair\n\nDigite uma opção: \t");
 
     std::cin >> opcao;
 
     return opcao;
 }
 
-int menuAcervo()
-{
+int menuAcervo() {
     int opcao;
 
     printf("\n===Acervo===\n\n1. Listar Filmes\n2. Cadastrar Filmes\n3. Editar Filmes\n4. Excluir Filmes\n0. Voltar\n\nDigite uma opção: ");
@@ -113,8 +105,7 @@ int menuAcervo()
     return opcao;
 }
 
-int menuCliente()
-{
+int menuCliente() {
     int opcao;
 
     printf("\n===Cliente===\n\n1. Listar Cliente\n2. Cadastrar Cliente\n3. Editar Cliente\n4. Excluir Cliente\n0. Voltar\n\nDigite uma opção: ");
@@ -124,10 +115,9 @@ int menuCliente()
     return opcao;
 }
 
-int menuLocacoes()
-{
+int menuLocacoes() {
     int opcao;
-    printf("\n===Locações===\n\n1.Locar um filme \n2.Deslocar um filme \n3. Listar Locados\n4.Listar Não Locados\n0. Voltar\n\nDigite uma opção: ");
+    printf("\n===Locações===\n\n1. Listar Locados \n2. Locar um filme \n3. Deslocar um filme\n4. Listar Não Locados\n0. Voltar\n\nDigite uma opção: ");
 
     scanf("%d", &opcao);
 
@@ -135,8 +125,7 @@ int menuLocacoes()
 
 }
 
-void cadastrarFilme()
-{
+void cadastrarFilme() {
     Filme filme;
 
     filme.id = getNextId();
@@ -151,7 +140,7 @@ void cadastrarFilme()
     filmes.push_front(filme);
 }
 
-void cadastrarCliente(){
+void cadastrarCliente() {
 
     Cliente cli;
 
@@ -165,10 +154,8 @@ void cadastrarCliente(){
     clientes.push_front(cli);
 }
 
-void listarLocacao()
-{
-    for (Locacao const &lc : locacoes)
-    {
+void listarLocacao() {
+    for (Locacao const &lc: locacoes) {
         printf(linhasDeCima);
         printf("|   Id: %d\n", lc.id);
         printf("|   Cliente:  %s\n", lc.cliente.nome);
@@ -177,10 +164,8 @@ void listarLocacao()
     }
 }
 
-void listarAcervo()
-{
-    for (Filme const &fm : filmes)
-    {
+void listarAcervo() {
+    for (Filme const &fm: filmes) {
         printf(linhasDeCima);
         printf("   Id: %d\n", fm.id);
         printf("   Titulo:  %s\n", fm.titulo);
@@ -190,10 +175,8 @@ void listarAcervo()
     }
 }
 
-void listarCliente()
-{
-    for (Cliente const &cli : clientes)
-    {
+void listarCliente() {
+    for (Cliente const &cli: clientes) {
         printf(linhasDeCima);
         printf("   Id: %d\n", cli.id);
         printf("   Nome: %s\n", cli.nome);
@@ -202,18 +185,33 @@ void listarCliente()
     }
 }
 
-int main()
-{
+void locarFilme() {
+    int idFilme;
+    int idCliente;
+    Locacao locacao{};
+
+    listarAcervo();
+    printf("Escolha um filme pelo ID: ");
+    scanf("%d", idFilme);
+    locacao.filme = getFilmeById(idFilme);
+
+    printf("Escolha um cliente pelo ID: ");
+    scanf("%d", idCliente);
+    locacao.cliente = getClienteById(idCliente);
+
+    printf("Filme locado! ENTER para continuar...");
+    scanf("");
+}
+
+int main() {
     // output em unicode
     SetConsoleOutputCP(65001);
     preencherListasTestes();
 
-    while (true)
-    {
+    while (true) {
         switch (menu()) {
             case 1:
-                switch (menuAcervo())
-                {
+                switch (menuAcervo()) {
                     case 1:
                         listarAcervo();
                         break;
@@ -227,8 +225,7 @@ int main()
                 }
                 break;
             case 2:
-                switch (menuCliente())
-                {
+                switch (menuCliente()) {
                     case 1:
                         listarCliente();
                         break;
@@ -242,14 +239,22 @@ int main()
                 }
                 break;
             case 3:
-                listarLocacao();
+                switch (menuLocacoes()) {
+                    case 1:
+                        listarLocacao();
+                        break;
+                    case 2:
+                        locarFilme();
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case 0:
                 goto exit_loop;
             default:
                 goto exit_loop;
-                break;
         }
     }
-    exit_loop: ;
+    exit_loop:;
 }
