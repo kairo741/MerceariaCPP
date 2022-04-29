@@ -25,6 +25,26 @@ int getNextId()
 }
 
 
+Filme getFilmeById(int id){
+    for (Filme const &f : filmes)
+    {
+        if (f.id == id){
+            return f;
+        }
+    }
+    return Filme();
+}
+
+Cliente getClienteById(int id){
+    for (Cliente const &cli : clientes)
+    {
+        if (cli.id == id){
+            return cli;
+        }
+    }
+    return Cliente();
+}
+
 Cliente makeClienteTeste()
 {
     Cliente cli;
