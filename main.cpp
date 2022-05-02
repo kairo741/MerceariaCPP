@@ -246,6 +246,28 @@ void locarFilme() {
     printf("Filme locado! \n");
 }
 
+void excluirCliente(){
+    listarCliente();
+
+    int id;
+
+    printf("Digite o ID do cliente para excluir: ");
+    scanf("%d", &id);
+
+    clientes.remove(getClienteById(id));
+}
+
+void excluirFilme(){
+    listarAcervo();
+
+    int id;
+
+    printf("Digite o ID do filme para excluir: ");
+    scanf("%d", &id);
+
+    filmes.remove(getFilmeById(id));
+}   
+
 int main() {
     // output em unicode
     SetConsoleOutputCP(65001);
@@ -266,10 +288,16 @@ int main() {
                         enterToContinue();
                         break;
 
+                    case 4:
+                        excluirFilme();
+                        enterToContinue();
+                        break;
+
                     default:
                         break;
                 }
                 break;
+                
             case 2:
                 switch (menuCliente()) {
                     case 1:
@@ -282,10 +310,16 @@ int main() {
                         enterToContinue();
                         break;
 
+                    case 4:
+                        excluirCliente();
+                        enterToContinue();
+                        break;
+
                     default:
                         break;
                 }
                 break;
+
             case 3:
                 switch (menuLocacoes()) {
                     case 1:
@@ -296,6 +330,8 @@ int main() {
                         locarFilme();
                         enterToContinue();
                         break;
+
+
                     default:
                         break;
                 }
