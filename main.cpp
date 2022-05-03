@@ -34,7 +34,8 @@ void clear_screen() {
 
 void enterToContinue() {
     printf("Pressione ENTER para continuar...");
-    getch();
+    fflush(stdin);
+    getchar();
 }
 
 
