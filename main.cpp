@@ -1,6 +1,5 @@
 #include <iostream>
 #include <list>
-#include <vector>
 #include <algorithm>
 #include <string.h>
 #include <windows.h>
@@ -8,7 +7,6 @@
 #include "cliente.h"
 #include "filme.h"
 #include "locacao.h"
-#include <cstdlib>
 
 using namespace std;
 
@@ -26,8 +24,7 @@ int getNextId() {
     return idCounter;
 }
 
-void clear_screen()
-{
+void clear_screen() {
 #ifdef _WIN32
     system("cls");
 #else
@@ -35,7 +32,7 @@ void clear_screen()
 #endif
 }
 
-void enterToContinue(){
+void enterToContinue() {
     printf("Pressione ENTER para continuar...");
     getch();
 }
@@ -101,7 +98,7 @@ void preencherListasTestes() {
 
 }
 
-void alterarFilme(){
+void alterarFilme() {
 
     Filme f;
 
@@ -118,7 +115,7 @@ void alterarFilme(){
     scanf("%s", &f.genero);
     printf("Digite o valor de locação do filme: ");
     scanf("%d", &f.valorLocacao);
-   
+
 }
 
 int menu() {
@@ -162,7 +159,7 @@ int menuLocacoes() {
 }
 
 void cadastrarFilme() {
-    Filme filme;
+    Filme filme{};
 
     filme.id = getNextId();
 
@@ -178,7 +175,7 @@ void cadastrarFilme() {
 
 void cadastrarCliente() {
 
-    Cliente cli;
+    Cliente cli{};
 
     cli.id = getNextId();
 
@@ -230,7 +227,7 @@ void locarFilme() {
     printf("Escolha um filme pelo ID: ");
     scanf("%d", &idFilme);
     locacao.filme = getFilmeById(idFilme);
-    if(!locacao.filme.id){
+    if (!locacao.filme.id) {
         printf("Filme inexistente! ");
         return;
     }
@@ -239,14 +236,14 @@ void locarFilme() {
     printf("Escolha um cliente pelo ID: ");
     scanf("%d", &idCliente);
     locacao.cliente = getClienteById(idCliente);
-    if(!locacao.cliente.id){
+    if (!locacao.cliente.id) {
         printf("Cliente inexistente! ");
         return;
     }
     printf("Filme locado! \n");
 }
 
-void excluirCliente(){
+void excluirCliente() {
     listarCliente();
 
     int id;
@@ -257,7 +254,7 @@ void excluirCliente(){
     clientes.remove(getClienteById(id));
 }
 
-void excluirFilme(){
+void excluirFilme() {
     listarAcervo();
 
     int id;
@@ -266,7 +263,7 @@ void excluirFilme(){
     scanf("%d", &id);
 
     filmes.remove(getFilmeById(id));
-}   
+}
 
 int main() {
     // output em unicode
@@ -297,7 +294,7 @@ int main() {
                         break;
                 }
                 break;
-                
+
             case 2:
                 switch (menuCliente()) {
                     case 1:
