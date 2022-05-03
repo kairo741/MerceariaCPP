@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <string.h>
 #include <windows.h>
-#include <conio.h>
 #include "cliente.h"
 #include "filme.h"
 #include "locacao.h"
@@ -38,6 +37,15 @@ void enterToContinue() {
     getchar();
 }
 
+auto getPosFilmeById(int id){
+    for(auto it = filmes.begin(); it != filmes.end(); it++){
+        if(it -> id == id){
+            return it;
+
+        }
+    }
+
+}
 
 Filme getFilmeById(int id) {
     for (Filme const &f: filmes) {
@@ -99,25 +107,6 @@ void preencherListasTestes() {
 
 }
 
-void alterarFilme() {
-
-    Filme f;
-
-    int escolha;
-
-    printf("Escolha o filme que sera modificado pelo numero dele: ex: 1, 2, 3...");
-    scanf("%d", &escolha);
-
-    f = getFilmeById(escolha);
-
-    printf("Digite o nome do filme: ");
-    scanf("%s", &f.titulo);
-    printf("Digite o genero do filme: ");
-    scanf("%s", &f.genero);
-    printf("Digite o valor de locação do filme: ");
-    scanf("%d", &f.valorLocacao);
-
-}
 
 int menu() {
     int opcao;
@@ -253,6 +242,26 @@ void excluirCliente() {
     scanf("%d", &id);
 
     clientes.remove(getClienteById(id));
+}
+
+void alterarFilme() {
+
+    listarAcervo();
+
+    int escolha;
+
+    printf("Escolha o filme que sera modificado pelo numero dele: ex: 1, 2, 3...");
+    scanf("%d", &escolha);
+
+    auto filmeIterator = getPosFilmeById(escolha);
+
+    printf("Digite o nome do filme: ");
+    scanf("%s", &filmeIterator->titulo);
+    printf("Digite o genero do filme: ");
+    scanf("%s", &filmeIterator->genero);
+    printf("Digite o valor de locação do filme: ");
+    scanf("%d", &filmeIterator->valorLocacao);
+
 }
 
 void excluirFilme() {
