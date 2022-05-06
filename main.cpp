@@ -1,41 +1,22 @@
 #include <iostream>
 #include <list>
-#include <algorithm>
 #include <string.h>
 #include <windows.h>
 #include "cliente.h"
 #include "filme.h"
 #include "locacao.h"
+#include "util.cpp"
 
 using namespace std;
 
 #define linhasDeCima "\n╭──────────────────────────╮\n"
 #define linhasDeBaixo "\n╰──────────────────────────╯\n"
 
-int idCounter = 0;
 
 list<Filme> filmes;
 list<Cliente> clientes;
 list<Locacao> locacoes;
 
-int getNextId() {
-    idCounter += 1;
-    return idCounter;
-}
-
-void clear_screen() {
-#ifdef _WIN32
-    system("cls");
-#else
-    system ("clear");
-#endif
-}
-
-void enterToContinue() {
-    printf("Pressione ENTER para continuar...");
-    fflush(stdin);
-    getchar();
-}
 
 auto getPosFilmeById(int id){
     for(auto it = filmes.begin(); it != filmes.end(); it++){
