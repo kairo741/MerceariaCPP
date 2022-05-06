@@ -274,7 +274,7 @@ void alterarFilme() {
 }
 
 void alterarCliente(){
-    listarCliente()
+    listarCliente();
 
     int escolha;
 
