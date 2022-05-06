@@ -7,6 +7,7 @@
 #include "util.cpp"
 #include "menus.cpp"
 #include "filme_controller.cpp"
+#include "cliente_controller.cpp"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -14,43 +15,7 @@
 
 using namespace std;
 
-
-
-
-list<Cliente> clientes;
 list<Locacao> locacoes;
-
-
-
-
-auto getPosClienteById(int id){
-    for(auto it = clientes.begin(); it != clientes.end(); it++){
-        if(it -> id == id){
-            return it;
-
-        }
-    }
-}
-
-
-
-Cliente getClienteById(int id) {
-    for (Cliente const &cli: clientes) {
-        if (cli.id == id) {
-            return cli;
-        }
-    }
-    return Cliente();
-}
-
-Cliente makeClienteTeste() {
-    Cliente cli;
-    cli.id = getNextId();
-    strcpy(cli.nome, "Cliente");
-    strcpy(cli.idade, "20");
-
-    return cli;
-}
 
 Locacao makeLocacaoTeste(int position) {
     Locacao locacao{};
@@ -62,8 +27,6 @@ Locacao makeLocacaoTeste(int position) {
 
     return locacao;
 }
-
-
 
 void preencherListasTestes() {
     filmes.push_front(makeFilmeTeste());
@@ -77,41 +40,12 @@ void preencherListasTestes() {
 
 }
 
-
-
-
-void cadastrarCliente() {
-
-    Cliente cli{};
-
-    cli.id = getNextId();
-
-    printf("Digite o nome do cliente: ");
-    scanf("%s", cli.nome);
-    printf("Digite a idade do cliente: ");
-    scanf("%s", cli.idade);
-
-    clientes.push_front(cli);
-}
-
 void listarLocacao() {
     for (Locacao const &lc: locacoes) {
         printf(linhasDeCima);
         printf("|   Id: %d\n", lc.id);
         printf("|   Cliente:  %s\n", lc.cliente.nome);
         printf("|   Filme:  %s", lc.filme.titulo);
-        printf(linhasDeBaixo);
-    }
-}
-
-
-
-void listarCliente() {
-    for (Cliente const &cli: clientes) {
-        printf(linhasDeCima);
-        printf("   Id: %d\n", cli.id);
-        printf("   Nome: %s\n", cli.nome);
-        printf("   Idade: %s", cli.idade);
         printf(linhasDeBaixo);
     }
 }
@@ -143,37 +77,6 @@ void locarFilme() {
     locacoes.push_back(locacao);
     printf("Filme locado! \n");
 }
-
-void excluirCliente() {
-    listarCliente();
-
-    int id;
-
-    printf("Digite o ID do cliente para excluir: ");
-    scanf("%d", &id);
-
-    clientes.remove(getClienteById(id));
-}
-
-
-void alterarCliente(){
-    listarCliente();
-
-    int escolha;
-
-    printf("Escolha qual cliente sera modificado pelo numero dele: ex 1, 2, 3...");
-    scanf("%d", &escolha);
-
-    auto clienteIterator = getPosClienteById(escolha);
-
-    printf("Digite o nome do Cliente: ");
-    scanf("%s", &clienteIterator->nome);
-    printf("Digite a idade do Cliente: ");
-    scanf("%s", &clienteIterator->idade);
-
-}
-
-
 
 int main() {
     // output em unicode
