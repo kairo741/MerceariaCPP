@@ -220,6 +220,9 @@ void locarFilme() {
         printf("Cliente inexistente! ");
         return;
     }
+
+    locacao.id = getNextId();
+    locacoes.push_back(locacao);
     printf("Filme locado! \n");
 }
 
