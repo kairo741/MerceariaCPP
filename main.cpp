@@ -104,8 +104,10 @@ int main() {
                         locarFilme();
                         enterToContinue();
                         break;
-
-
+                    case 3:
+                        devolucaoFilme();
+                        enterToContinue();
+                        break;
                     default:
                         break;
                 }
