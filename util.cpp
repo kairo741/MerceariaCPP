@@ -4,6 +4,9 @@
 #ifndef _arquivo_util_cpp_
 #define _arquivo_util_cpp_
 
+#define linhasDeCima "\n╭──────────────────────────╮\n"
+#define linhasDeBaixo "\n╰──────────────────────────╯\n"
+
 int idCounter = 0;
 
 int getNextId() {
