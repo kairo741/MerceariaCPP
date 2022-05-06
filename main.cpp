@@ -1,11 +1,14 @@
 #include <iostream>
 #include <list>
 #include <string.h>
-#include <windows.h>
 #include "cliente.h"
 #include "filme.h"
 #include "locacao.h"
 #include "util.cpp"
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 using namespace std;
 
@@ -287,7 +290,9 @@ void excluirFilme() {
 
 int main() {
     // output em unicode
+    #ifdef _WIN32
     SetConsoleOutputCP(65001);
+    #endif
     preencherListasTestes();
 
     while (true) {
