@@ -47,6 +47,15 @@ auto getPosFilmeById(int id){
 
 }
 
+auto getPosClienteById(int id){
+    for(auto it = clientes.begin(); it != clientes.end(); it++){
+        if(it -> id == id){
+            return it;
+
+        }
+    }
+}
+
 Filme getFilmeById(int id) {
     for (Filme const &f: filmes) {
         if (f.id == id) {
@@ -264,6 +273,23 @@ void alterarFilme() {
 
 }
 
+void alterarCliente(){
+    listarCliente()
+
+    int escolha;
+
+    printf("Escolha qual cliente sera modificado pelo numero dele: ex 1, 2, 3...");
+    scanf("%d", &escolha);
+
+    auto clienteIterator = getPosClienteById(escolha);
+
+    printf("Digite o nome do Cliente: ");
+    scanf("%s", &clienteIterator->nome);
+    printf("Digite a idade do Cliente: ");
+    scanf("%s", &clienteIterator->idade);
+
+}
+
 void excluirFilme() {
     listarAcervo();
 
@@ -295,10 +321,16 @@ int main() {
                         enterToContinue();
                         break;
 
+                    case 3:
+                        alterarFilme();
+                        enterToContinue();
+                        break;
+
                     case 4:
                         excluirFilme();
                         enterToContinue();
                         break;
+                        
 
                     default:
                         break;
@@ -314,6 +346,11 @@ int main() {
 
                     case 2:
                         cadastrarCliente();
+                        enterToContinue();
+                        break;
+
+                    case 3:
+                        alterarCliente();
                         enterToContinue();
                         break;
 
