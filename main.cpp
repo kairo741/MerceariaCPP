@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
 #include <string.h>
+
 #include "cliente.h"
 #include "filme.h"
 #include "locacao.h"
@@ -8,25 +9,13 @@
 #include "menus.cpp"
 #include "filme_controller.cpp"
 #include "cliente_controller.cpp"
+#include "locacao_controller.cpp"
 
 #ifdef _WIN32
 #include <windows.h>
 #endif
 
 using namespace std;
-
-list<Locacao> locacoes;
-
-Locacao makeLocacaoTeste(int position) {
-    Locacao locacao{};
-    locacao.id = getNextId();
-    auto clientePosition = std::next(clientes.begin(), position);
-    locacao.cliente = *clientePosition;
-    auto filmePosition = std::next(filmes.begin(), position);
-    locacao.filme = *filmePosition;
-
-    return locacao;
-}
 
 void preencherListasTestes() {
     filmes.push_front(makeFilmeTeste());
@@ -38,44 +27,6 @@ void preencherListasTestes() {
     locacoes.push_front(makeLocacaoTeste(0));
     locacoes.push_front(makeLocacaoTeste(1));
 
-}
-
-void listarLocacao() {
-    for (Locacao const &lc: locacoes) {
-        printf(linhasDeCima);
-        printf("|   Id: %d\n", lc.id);
-        printf("|   Cliente:  %s\n", lc.cliente.nome);
-        printf("|   Filme:  %s", lc.filme.titulo);
-        printf(linhasDeBaixo);
-    }
-}
-
-void locarFilme() {
-    int idFilme;
-    int idCliente;
-    Locacao locacao{};
-
-    listarAcervo();
-    printf("Escolha um filme pelo ID: ");
-    scanf("%d", &idFilme);
-    locacao.filme = getFilmeById(idFilme);
-    if (!locacao.filme.id) {
-        printf("Filme inexistente! ");
-        return;
-    }
-
-    listarCliente();
-    printf("Escolha um cliente pelo ID: ");
-    scanf("%d", &idCliente);
-    locacao.cliente = getClienteById(idCliente);
-    if (!locacao.cliente.id) {
-        printf("Cliente inexistente! ");
-        return;
-    }
-
-    locacao.id = getNextId();
-    locacoes.push_back(locacao);
-    printf("Filme locado! \n");
 }
 
 int main() {
