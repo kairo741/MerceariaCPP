@@ -8,6 +8,10 @@ struct Locacao
     int id;
     Filme filme;
     Cliente cliente;
+
+    int operator==(const Locacao &loc){
+        return loc.id == id;
+    }
 };
 
 #endif

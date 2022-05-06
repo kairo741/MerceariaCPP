@@ -14,6 +14,15 @@ using namespace std;
 
 list<Locacao> locacoes;
 
+Locacao getLocacaoById(int id) {
+    for (Locacao const &loc: locacoes) {
+        if (loc.id == id) {
+            return loc;
+        }
+    }
+    return Locacao();
+}
+
 Locacao makeLocacaoTeste(int position) {
     Locacao locacao{};
     locacao.id = getNextId();
@@ -61,6 +70,19 @@ void locarFilme() {
     locacao.id = getNextId();
     locacoes.push_back(locacao);
     printf("Filme locado! \n");
+}
+ 
+void devolucaoFilme(){
+    
+    int escolha;
+
+    listarLocacao();
+
+    printf("Escolha o ID de um filme para realizar a devolução: ");
+    scanf("%d", escolha);
+
+    locacoes.remove(getLocacaoById(escolha));
+
 }
 
 #endif
