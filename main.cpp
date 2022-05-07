@@ -108,6 +108,12 @@ int main() {
                         devolucaoFilme();
                         enterToContinue();
                         break;
+
+                    case 5:
+                        mostrarFaturamento();
+                        enterToContinue();
+                        break;
+
                     default:
                         break;
                 }

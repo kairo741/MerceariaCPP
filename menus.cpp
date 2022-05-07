@@ -33,7 +33,7 @@ int menuCliente() {
 
 int menuLocacoes() {
     int opcao;
-    printf("\n===Locações===\n\n1. Listar Locados \n2. Locar um filme \n3. Deslocar um filme\n4. Listar Não Locados\n0. Voltar\n\nDigite uma opção: ");
+    printf("\n===Locações===\n\n1. Listar Locados \n2. Locar um filme \n3. Devolução de um filme\n4. Listar Não Locados\n5. Mostrar Faturamento\n0. Voltar\n\nDigite uma opção: ");
 
     scanf("%d", &opcao);
 

@@ -14,6 +14,8 @@ using namespace std;
 
 list<Locacao> locacoes;
 
+int faturamento = 0;
+
 Locacao getLocacaoById(int id) {
     for (Locacao const &loc: locacoes) {
         if (loc.id == id) {
@@ -81,8 +83,18 @@ void devolucaoFilme(){
     printf("Escolha o ID de um filme para realizar a devolução: ");
     scanf("%d", &escolha);
 
-    locacoes.remove(getLocacaoById(escolha));
+    Locacao loc = getLocacaoById(escolha);
 
+    locacoes.remove(loc);
+
+    faturamento += loc.filme.valorLocacao;
+}
+
+void mostrarFaturamento(){
+    printf(linhasDeCima);
+    printf("   Faturamento Total\n");
+    printf("    R$%d", faturamento);
+    printf(linhasDeBaixo);
 }
 
 #endif
