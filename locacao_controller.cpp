@@ -79,7 +79,7 @@ void devolucaoFilme(){
     listarLocacao();
 
     printf("Escolha o ID de um filme para realizar a devolução: ");
-    scanf("%d", escolha);
+    scanf("%d", &escolha);
 
     locacoes.remove(getLocacaoById(escolha));
 

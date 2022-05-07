@@ -24,8 +24,9 @@ void clear_screen() {
 
 void enterToContinue() {
     printf("Pressione ENTER para continuar...");
-    fflush(stdin);
-    getchar();
+    if (getchar() == '\n'){
+        getchar();
+    }
 }
 
 
