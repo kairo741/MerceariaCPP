@@ -109,6 +109,11 @@ int main() {
                         enterToContinue();
                         break;
 
+                    case 4:
+                        listarNaoLocados();
+                        enterToContinue();
+                        break;
+
                     case 5:
                         mostrarFaturamento();
                         enterToContinue();

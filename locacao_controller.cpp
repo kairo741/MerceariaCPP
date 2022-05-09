@@ -46,12 +46,33 @@ void listarLocacao() {
     }
 }
 
+void listarNaoLocados(){
+    
+    bool filmeNaoLocado = true;
+
+    for (Filme const &fm: filmes) {
+        for(Locacao const &lc: locacoes){
+            if(fm.id == lc.filme.id){
+                filmeNaoLocado = false;
+            }
+        }
+        if (filmeNaoLocado){
+            printf(linhasDeCima);
+            printf("   Id: %d\n", fm.id);
+            printf("   Titulo:  %s\n", fm.titulo);
+            printf("   Gênero:  %s\n", fm.genero);
+            printf("   Valor da Locação: R$%d", fm.valorLocacao);
+            printf(linhasDeBaixo);
+        }
+    }
+}
+
 void locarFilme() {
     int idFilme;
     int idCliente;
     Locacao locacao{};
 
-    listarAcervo();
+    listarNaoLocados();
     printf("Escolha um filme pelo ID: ");
     scanf("%d", &idFilme);
     locacao.filme = getFilmeById(idFilme);
