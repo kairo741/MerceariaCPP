@@ -1,5 +1,6 @@
 #include "Product.h"
+#include "Util.h"
 
-std::string Product::getProductName() {
+char* Product::getProductName() {
     return name;
 }
