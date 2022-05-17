@@ -22,9 +22,10 @@ void Util::enterToContinue() {
     }
 }
 
-void Util::getUpLines(){
-    printf(upLines)
+void Util::getUpLines() {
+    printf(upLines);
 }
-void Util::getUnderLines(){
-    printf(underLines)
+
+void Util::getUnderLines() {
+    printf(underLines);
 }
