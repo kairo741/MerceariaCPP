@@ -5,7 +5,7 @@
 #include "cliente.h"
 #include "filme.h"
 #include "locacao.h"
-#include "util.cpp"
+#include "Util.cpp"
 #include "menus.cpp"
 #include "filme_controller.cpp"
 #include "cliente_controller.cpp"
