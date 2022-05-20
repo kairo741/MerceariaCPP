@@ -27,7 +27,7 @@ Locacao getLocacaoById(int id) {
 
 Locacao makeLocacaoTeste(int position) {
     Locacao locacao{};
-    locacao.id = getNextId();
+    //locacao.id = getNextId();
     auto clientePosition = std::next(clientes.begin(), position);
     locacao.cliente = *clientePosition;
     auto filmePosition = std::next(filmes.begin(), position);
@@ -90,7 +90,7 @@ void locarFilme() {
         return;
     }
 
-    locacao.id = getNextId();
+    //locacao.id = getNextId();
     locacoes.push_back(locacao);
     printf("Filme locado! \n");
 }

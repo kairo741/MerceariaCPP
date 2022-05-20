@@ -9,11 +9,14 @@ private:
     char name[50];
     double totalSpent;
 public:
-    explicit Customer(int _id, const char* _name, double _totalSpent){
-        id = _id;
-        strcpy(name, _name);
-        totalSpent = _totalSpent;
-    };
+    explicit Customer(int _id, const char* _name, double _totalSpent);
+    explicit Customer();
+    char* getName();
+    int getId();
+    double getTotalSpent();
+    void setName(char* _name);
+    void setId(int _id);
+    void setTotalSpent(double _totalSpent);
 
 };
 
