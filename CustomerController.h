@@ -11,40 +11,14 @@ private:
     CustomerRepository customerRepository;
 
 public:
-    explicit CustomerController() = default;
+    explicit CustomerController(CustomerRepository _customerRepository) = default;
 
-    int menuCustomer();
-    void showCustomer();
-    void registerCustomer();
-    void updateCustomer();
-    void deleteCustomer();
+    int menu();
+    void list();
+    void create();
+    void update();
+    void remove();
 
-    void CustomerMenu(){ 
-        switch (menuCustomer()) {
-            case 1:
-                showCustomer();
-                Util::enterToContinue();
-                break;
-
-            case 2:
-                registerCustomer();
-                Util::enterToContinue();
-                break;
-
-            case 3:
-                updateCustomer();
-                Util::enterToContinue();
-                break;
-
-            case 4:
-                deleteCustomer();
-                Util::enterToContinue();
-                break;
-
-            default:
-                break;
-        }
-    }
 };
 
 #endif
