@@ -1,7 +1,7 @@
 #include "Util.h"
 #include "CustomerController.h"
 
-CustomerControler::CustomerController(CustomerRepository _customerRepository) {
+CustomerController::CustomerController(CustomerRepository _customerRepository) {
     customerRepository = _customerRepository;
 };
 
