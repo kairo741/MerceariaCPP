@@ -1,14 +1,26 @@
 #include "ProductController.h"
 #include "Product.h"
 #include "Util.h"
+#include "ProductRepository.h"
 
-int ProductController::menu(){
+int ProductController::menu() {
     return 0;
 }
-void ProductController::list(){}
-void ProductController::create(){}
-void ProductController::update(){}
-void ProductController::remove(){}
+
+ProductController::ProductController(ProductRepository _productRepository) {
+    productRepository = _productRepository;
+}
+
+
+void ProductController::list() {
+    productRepository.read();
+}
+
+void ProductController::create() {}
+
+void ProductController::update() {}
+
+void ProductController::remove() {}
 
 // void mainProductMenu()
 // {

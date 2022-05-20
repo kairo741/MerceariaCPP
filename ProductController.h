@@ -4,19 +4,22 @@
 #include "Product.h"
 #include "Util.h"
 #include "ProductRepository.h"
-#include <stdio.h>
 
-class ProductController{
+class ProductController {
 private:
-    ProductRepository customerRepository;
+    ProductRepository productRepository;
 
 public:
-    explicit ProductController() = default;
+    explicit ProductController(ProductRepository _productRepository);
 
-    int menu();
+    static int menu();
+
     void list();
+
     void create();
+
     void update();
+
     void remove();
 
 };
