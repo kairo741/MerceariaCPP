@@ -11,7 +11,7 @@ private:
     CustomerRepository customerRepository;
 
 public:
-    explicit CustomerController(CustomerRepository _customerRepository) = default;
+    explicit CustomerController(CustomerRepository _customerRepository);
 
     int menu();
     void list();
