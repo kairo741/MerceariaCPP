@@ -2,9 +2,17 @@
 #include "Product.h"
 #include "Util.h"
 #include "ProductRepository.h"
+#include <iostream>
+
 
 int ProductController::menu() {
-    return 0;
+    int opcao;
+
+    printf("\n===Produto===\n\n1. Listar Produto\n2. Cadastrar Produto\n3. Editar Produto\n4. Excluir Produto\n0. Voltar\n\nDigite uma opção: ");
+
+    std::cin >> opcao;
+    Util::clearTerminal();
+    return opcao;
 }
 
 ProductController::ProductController(ProductRepository _productRepository) {

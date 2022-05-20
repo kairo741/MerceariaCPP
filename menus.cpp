@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Util.cpp"
+#include "Util.h"
 
 int menu() {
     int opcao;
@@ -7,7 +7,7 @@ int menu() {
     printf("\n===Menu===\n\n1. Acervo\n2. Clientes\n3. Locação\n0. Sair\n\nDigite uma opção: \t");
 
     std::cin >> opcao;
-    clear_screen();
+    Util::clearTerminal();
     return opcao;
 }
 
