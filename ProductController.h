@@ -13,13 +13,12 @@ private:
 public:
     explicit ProductController() = default;
 
-    int menuProduct();
-    void showProduct();
-    void registerProduct();
-    void updateProduct();
-    void deleteProduct();
+    int menu();
+    void list();
+    void create();
+    void update();
+    void remove();
 
-    void ProductMenu();
 };
 
 #endif
