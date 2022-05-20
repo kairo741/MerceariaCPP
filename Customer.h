@@ -1,43 +1,44 @@
 #ifndef _market_customer_h_
 #define _market_customer_h_
 
-#include <string>
 #include "Util.h"
-
-using namespace std;
-using namespace Util;
 
 class Customer {
 private:
-    int id{};
-    string name;
-    double totalCost{};
+    int id;
+    char name[50];
+    double totalSpent;
 public:
     explicit Customer() = default;
 
-    string getCustomerName();
+    char* getCustomerName();
 
-    void CustomerMenu()
-    {
+    int menuCustomer();
+    void showCustomer();
+    void registerCustomer();
+    void updateCustomer();
+    void deleteCustomer();
+
+    void CustomerMenu(){ 
         switch (menuCustomer()) {
             case 1:
                 showCustomer();
-                enterToContinue()
+                Util::enterToContinue();
                 break;
 
             case 2:
                 registerCustomer();
-                enterToContinue();
+                Util::enterToContinue();
                 break;
 
             case 3:
                 updateCustomer();
-                enterToContinue();
+                Util::enterToContinue();
                 break;
 
             case 4:
                 deleteCustomer();
-                enterToContinue();
+                Util::enterToContinue();
                 break;
 
             default:
