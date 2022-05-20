@@ -3,6 +3,9 @@
 
 #include "Customer.h"
 #include <stdio.h>
+#include "Util.h"
+#include <iostream>
+
 
 class CustomerRepository{
 private:
@@ -25,7 +28,12 @@ public:
             if (feof(filePointer)){
                 break;
             }
-            // printar cliente aqui
+
+            Util::getUpLines();
+            printf("   Id: %d\n", buffer.getId());
+            printf("   Nome: %s\n", buffer.getName());
+            printf("   Total Gasto: %f.2", buffer.getTotalSpent());
+            Util::getUnderLines();
         }
 
         fclose(filePointer);
@@ -58,15 +66,14 @@ public:
                 break;
             }
 
-            // descomentar quando estiver definido os getters e setters
-            // if (buffer.id == c.id){
-            //     if (!removeData){
-            //         fwrite(&c, 1, sizeof(c), newFilePointer);
-            //     }
-            // }
-            // else{
-            //     fwrite(&buffer, 1, sizeof(buffer), newFilePointer);
-            // }
+             if (buffer.getId() == c.getId()){
+                 if (!removeData){
+                     fwrite(&c, 1, sizeof(c), newFilePointer);
+                 }
+             }
+             else{
+                 fwrite(&buffer, 1, sizeof(buffer), newFilePointer);
+             }
         }
 
         fclose(filePointer);
