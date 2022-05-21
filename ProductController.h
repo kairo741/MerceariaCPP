@@ -16,7 +16,7 @@ public:
 
     void list();
 
-    void create();
+    static void create();
 
     void update();
 

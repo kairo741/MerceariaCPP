@@ -30,9 +30,19 @@ void ProductController::create() {
     product.setId(Util::getNextId());
     printf("Insira o nome do produto: ");
 
-//    strcpy(product.getName(), "Kairo Amorim");
+    char *productName = nullptr;
+    scanf("%c", productName);
+    product.setName(productName);
 
+    printf("Insira o preço: ");
+    double price = 0;
+    scanf("%d", price);
+    product.setPrice(price);
 
+    printf("Insira a quantidade: ");
+    int quantity = 0;
+    scanf("%d", quantity);
+    product.setQuantity(quantity);
 }
 
 void ProductController::update() {}

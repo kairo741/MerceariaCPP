@@ -20,6 +20,8 @@ public:
 
     const char *getName() const;
 
+    void setName(char* name);
+
     double getPrice() const;
 
     void setPrice(double price);

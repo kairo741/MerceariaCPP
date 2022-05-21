@@ -1,18 +1,20 @@
 #include<stdio.h>
-#include"Util.cpp"
+#include"Util.h"
 #include"filme.h"
 #include <list>
+
 #ifndef _arquivo_filme_controller_cpp_
 #define _arquivo_filme_controller_cpp_
 
+#include <cstring>
 
 using namespace std;
 
 list<Filme> filmes;
 
-auto getPosFilmeById(int id){
-    for(auto it = filmes.begin(); it != filmes.end(); it++){
-        if(it -> id == id){
+auto getPosFilmeById(int id) {
+    for (auto it = filmes.begin(); it != filmes.end(); it++) {
+        if (it->id == id) {
             return it;
 
         }
@@ -31,7 +33,7 @@ Filme getFilmeById(int id) {
 
 Filme makeFilmeTeste() {
     Filme filme;
-    filme.id = getNextId();
+    filme.id = Util::getNextId();
     strcpy(filme.titulo, "Kairo O Filme");
     strcpy(filme.genero, "Kairo Amorim");
     filme.valorLocacao = 15;
@@ -42,7 +44,7 @@ Filme makeFilmeTeste() {
 void cadastrarFilme() {
     Filme filme{};
 
-    filme.id = getNextId();
+    filme.id = Util::getNextId();
 
     printf("Digite o nome do filme: ");
     scanf("%s", filme.titulo);
@@ -56,12 +58,12 @@ void cadastrarFilme() {
 
 void listarAcervo() {
     for (Filme const &fm: filmes) {
-        printf(linhasDeCima);
+        printf("-------");
         printf("   Id: %d\n", fm.id);
         printf("   Titulo:  %s\n", fm.titulo);
         printf("   Gênero:  %s\n", fm.genero);
         printf("   Valor da Locação: R$%d", fm.valorLocacao);
-        printf(linhasDeBaixo);
+        printf("-------");
     }
 }
 

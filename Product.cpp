@@ -1,9 +1,6 @@
 #include "Product.h"
 #include "Util.h"
-
-char *Product::getProductName() {
-    return name;
-}
+#include <cstring>
 
 int Product::getId() const {
     return id;
@@ -31,4 +28,8 @@ int Product::getQuantity() const {
 
 void Product::setQuantity(int quantity) {
     Product::quantity = quantity;
+}
+
+void Product::setName(char *name) {
+    strcpy(Product::name, name);
 }
