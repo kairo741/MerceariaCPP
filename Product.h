@@ -10,6 +10,7 @@ private:
     double price;
     int quantity;
 public:
+    explicit Product(int _id, const char* _name, double _price, int _quantity);
     explicit Product() = default;
 
     int getId() const;

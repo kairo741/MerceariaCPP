@@ -8,7 +8,7 @@ private:
     double totalSpent;
 public:
     explicit Customer(int _id, const char* _name, double _totalSpent);
-    explicit Customer();
+    explicit Customer() = default;
     char* getName();
     int getId();
     double getTotalSpent();

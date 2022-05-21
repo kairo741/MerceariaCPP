@@ -6,15 +6,14 @@
 class CustomerRepository{
 private:
     const char* customerFile = "customers.bin";
-    const char* customerTempFile = "customers temp.bin";
-
+    const char* customerTempFile = "customers_temp.bin";
 
 public:  
     explicit CustomerRepository() = default;
-    void readCustomers();
-    void writeCustomers(Customer c);
-    void replaceOrDeleteCustomer(Customer c, bool removeData=false);
-
+    void read();
+    void write(Customer c);
+    void replaceOrDelete(Customer c, bool removeData=false);
+    Customer getById(int id);
 };
 
 #endif

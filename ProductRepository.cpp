@@ -1,6 +1,6 @@
 #include "ProductRepository.h"
 #include "Product.h"
-
+#include <stdio.h>
 
 void ProductRepository::read() {
     FILE *filePointer;
@@ -63,4 +63,27 @@ void ProductRepository::replaceOrDelete(Product product, bool removeData) {
     fclose(newFilePointer);
     remove(productFile);
     rename(productTempFile, productFile);
+}
+
+Product ProductRepository::getById(int id){
+    FILE *filePointer;
+
+    filePointer = fopen(productFile, "rb");
+    Product buffer;
+
+    fseek(filePointer, 0, SEEK_SET);
+
+    while (true) {
+        fread(&buffer, sizeof(buffer), 1, filePointer);
+        if (feof(filePointer)) {
+            break;
+        }
+        if (buffer.getId() == id){
+            fclose(filePointer);
+            return buffer;
+        }
+    }
+
+    fclose(filePointer);
+    return Product();
 }

@@ -1,4 +1,6 @@
-#include <Util.h>
+#include "Util.h"
+#include <stdio.h>
+#include <algorithm>
 
 #define upLines "\n╭──────────────────────────╮\n"
 #define underLines "\n╰──────────────────────────╯\n"
@@ -12,15 +14,15 @@ void Util::clearTerminal() {
 }
 
 void Util::enterToContinue() {
-    printf("Pressione ENTER para continuar...");
+    printf("\n\nPressione ENTER para continuar...");
     if (getchar() == '\n') {
         getchar();
     }
 }
 
 int Util::getNextId() {
-    id++;
-    return id;
+    // id++;
+    return 1;
 }
 
 void Util::getUpLines() {

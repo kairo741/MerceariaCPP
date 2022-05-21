@@ -2,7 +2,7 @@
 #include "Util.h"
 #include <stdio.h>
 
-void CustomerRepository::readCustomers(){
+void CustomerRepository::read(){
     FILE *filePointer;
 
     filePointer = fopen(customerFile, "rb");
@@ -27,7 +27,7 @@ void CustomerRepository::readCustomers(){
 }
 
 
-void CustomerRepository::writeCustomers(Customer c){
+void CustomerRepository::write(Customer c){
     FILE *filePointer;
     filePointer = fopen(customerFile, "ab");
 
@@ -36,7 +36,7 @@ void CustomerRepository::writeCustomers(Customer c){
 }
 
 
-void CustomerRepository::replaceOrDeleteCustomer(Customer c, bool removeData){
+void CustomerRepository::replaceOrDelete(Customer c, bool removeData){
     FILE *filePointer;
     filePointer = fopen(customerFile, "rb");
     Customer buffer;
@@ -67,4 +67,26 @@ void CustomerRepository::replaceOrDeleteCustomer(Customer c, bool removeData){
     fclose(newFilePointer);
     remove(customerFile);
     rename(customerTempFile, customerFile);
+}
+
+Customer CustomerRepository::getById(int id){
+    FILE *filePointer;
+
+    filePointer = fopen(customerFile, "rb");
+    Customer buffer;
+
+    fseek(filePointer, 0, SEEK_SET);
+
+    while (true){
+        fread(&buffer, sizeof(buffer), 1, filePointer);
+        if (feof(filePointer)){
+            break;
+        }
+        if (buffer.getId() == id){
+            fclose(filePointer);
+            return buffer;
+        }
+    }
+    fclose(filePointer);
+    return Customer();
 }

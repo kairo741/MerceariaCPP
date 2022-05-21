@@ -14,6 +14,7 @@ public:
     void read();
     void write(Product product);
     void replaceOrDelete(Product product, bool removeData = false);
+    Product getById(int id);
 };
 
 #endif

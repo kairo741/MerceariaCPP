@@ -6,8 +6,7 @@
 
 class ProductController {
 private:
-    static ProductRepository productRepository;
-
+    ProductRepository productRepository;
 public:
     explicit ProductController(ProductRepository _productRepository);
 

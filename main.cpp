@@ -1,133 +1,36 @@
-#include <iostream>
-#include <list>
-#include <string.h>
-
-#include "cliente.h"
-#include "filme.h"
-#include "locacao.h"
-#include "Util.cpp"
-#include "menus.cpp"
-#include "filme_controller.cpp"
-#include "cliente_controller.cpp"
-#include "locacao_controller.cpp"
-
 #ifdef _WIN32
 #include <windows.h>
 #endif
 
-using namespace std;
+#include <stdio.h>
+#include <iostream>
 
-void preencherListasTestes() {
-    filmes.push_front(makeFilmeTeste());
-    filmes.push_front(makeFilmeTeste());
+#include "CustomerRepository.h"
+#include "ProductRepository.h"
+#include "Product.h"
+#include "Customer.h"
+#include "SaleController.h"
 
-    clientes.push_front(makeClienteTeste());
-    clientes.push_front(makeClienteTeste());
 
-    locacoes.push_front(makeLocacaoTeste(0));
-    locacoes.push_front(makeLocacaoTeste(1));
 
-}
-
-int main() {
-    // output em unicode
+int main(){
     #ifdef _WIN32
     SetConsoleOutputCP(65001);
     #endif
-    preencherListasTestes();
 
-    while (true) {
-        clear_screen();
-        switch (menu()) {
-            case 1:
-                switch (menuAcervo()) {
-                    case 1:
-                        listarAcervo();
-                        enterToContinue();
-                        break;
+    Customer c = Customer(1, "nome", 20.0);
+    Product p = Product(2, "nome produto", 20.0, 200);
 
-                    case 2:
-                        cadastrarFilme();
-                        enterToContinue();
-                        break;
+    CustomerRepository cr = CustomerRepository();
+    ProductRepository pr = ProductRepository();
 
-                    case 3:
-                        alterarFilme();
-                        enterToContinue();
-                        break;
+    pr.write(p);
+    // cr.write(c);
 
-                    case 4:
-                        excluirFilme();
-                        enterToContinue();
-                        break;
-                        
+    SaleController sc = SaleController(cr, pr);
 
-                    default:
-                        break;
-                }
-                break;
+    sc.makeSale();
+    
 
-            case 2:
-                switch (menuCliente()) {
-                    case 1:
-                        listarCliente();
-                        enterToContinue();
-                        break;
-
-                    case 2:
-                        cadastrarCliente();
-                        enterToContinue();
-                        break;
-
-                    case 3:
-                        alterarCliente();
-                        enterToContinue();
-                        break;
-
-                    case 4:
-                        excluirCliente();
-                        enterToContinue();
-                        break;
-
-                    default:
-                        break;
-                }
-                break;
-
-            case 3:
-                switch (menuLocacoes()) {
-                    case 1:
-                        listarLocacao();
-                        enterToContinue();
-                        break;
-                    case 2:
-                        locarFilme();
-                        enterToContinue();
-                        break;
-                    case 3:
-                        devolucaoFilme();
-                        enterToContinue();
-                        break;
-
-                    case 4:
-                        listarNaoLocados();
-                        enterToContinue();
-                        break;
-
-                    case 5:
-                        mostrarFaturamento();
-                        enterToContinue();
-                        break;
-
-                    default:
-                        break;
-                }
-                break;
-            case 0:
-                goto exit_loop;
-            default:
-                goto exit_loop;
-        }
-    }
-    exit_loop:;
+    return 0;
 }

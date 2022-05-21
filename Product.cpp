@@ -2,6 +2,13 @@
 #include "Util.h"
 #include <cstring>
 
+Product::Product(int _id, const char* _name, double _price, int _quantity){
+    id = _id;
+    strcpy(name, _name);
+    price = _price;
+    quantity = _quantity;
+}
+
 int Product::getId() const {
     return id;
 }

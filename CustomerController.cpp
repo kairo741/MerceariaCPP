@@ -1,5 +1,7 @@
 #include "CustomerController.h"
+#include "Util.h"
 #include <iostream>
+
 
 CustomerController::CustomerController(CustomerRepository _customerRepository) {
     customerRepository = _customerRepository;
@@ -15,7 +17,8 @@ int CustomerController::menu(){
     return option;
 }
 void CustomerController::list(){
-    customerRepository.readCustomers();
+    customerRepository.read();
+    Util::enterToContinue();
 }
 void CustomerController::create(){}
 void CustomerController::update(){}
