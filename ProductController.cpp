@@ -3,7 +3,7 @@
 #include "Util.h"
 #include "ProductRepository.h"
 #include <iostream>
-
+#include <string.h>
 
 int ProductController::menu() {
     int opcao;
@@ -24,7 +24,16 @@ void ProductController::list() {
     productRepository.read();
 }
 
-void ProductController::create() {}
+void ProductController::create() {
+    Product product{};
+
+    product.setId(Util::getNextId());
+    printf("Insira o nome do produto: ");
+
+//    strcpy(product.getName(), "Kairo Amorim");
+
+
+}
 
 void ProductController::update() {}
 

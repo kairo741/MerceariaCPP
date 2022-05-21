@@ -3,7 +3,7 @@
 
 #include "Util.h"
 
-using namespace Util;
+//using namespace Util;
 
 class Product {
 private:
@@ -14,35 +14,20 @@ private:
 public:
     explicit Product() = default;
 
-    char* getProductName();
+    int getId() const;
 
-    void ProductMenu()
-    {
-        switch (menuProduct()) {
-            case 1:
-                showProduct();
-                enterToContinue()
-                break;
+    void setId(int id);
 
-            case 2:
-                registerProduct();
-                enterToContinue();
-                break;
+    const char *getName() const;
 
-            case 3:
-                updateProduct();
-                enterToContinue();
-                break;
+    double getPrice() const;
 
-            case 4:
-                deleteProduct();
-                enterToContinue();
-                break;
+    void setPrice(double price);
 
-            default:
-                break;
-        }
-    }
+    int getQuantity() const;
+
+    void setQuantity(int quantity);
+
 };
 
 #endif

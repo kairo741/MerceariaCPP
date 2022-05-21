@@ -22,6 +22,11 @@ void Util::enterToContinue() {
     }
 }
 
+int Util::getNextId() {
+    id++;
+    return id;
+}
+
 void Util::getUpLines() {
     printf(upLines);
 }

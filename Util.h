@@ -2,7 +2,10 @@
 #define _market_util_h_
 
 class Util {
+    static int id;
 public:
+
+    static int getNextId();
 
     static void clearTerminal();
 
