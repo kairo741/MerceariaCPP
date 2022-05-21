@@ -7,16 +7,18 @@
 
 class ProductController {
 private:
-    ProductRepository productRepository;
+    static ProductRepository productRepository;
 
 public:
     explicit ProductController(ProductRepository _productRepository);
 
     static int menu();
 
+    Product newProduct();
+
     void list();
 
-    static void create();
+    void create();
 
     void update();
 

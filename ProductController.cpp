@@ -25,6 +25,17 @@ void ProductController::list() {
 }
 
 void ProductController::create() {
+    productRepository.write(this->newProduct());
+}
+
+void ProductController::update() {
+    // todo - receber o produto que será atualizado/substituido por parâmetro
+    productRepository.replaceOrDelete(this->newProduct());
+}
+
+void ProductController::remove() {}
+
+Product ProductController::newProduct() {
     Product product{};
 
     product.setId(Util::getNextId());
@@ -43,11 +54,8 @@ void ProductController::create() {
     int quantity = 0;
     scanf("%d", quantity);
     product.setQuantity(quantity);
+    return product;
 }
-
-void ProductController::update() {}
-
-void ProductController::remove() {}
 
 // void mainProductMenu()
 // {
