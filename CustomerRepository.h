@@ -2,10 +2,6 @@
 #define _market_customer_repository_h_
 
 #include "Customer.h"
-#include <stdio.h>
-#include "Util.h"
-#include <iostream>
-
 
 class CustomerRepository{
 private:

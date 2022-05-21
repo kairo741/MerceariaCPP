@@ -1,5 +1,4 @@
 #include "Customer.h"
-#include "Util.h"
 #include <string.h>
 
 char* Customer::getName() {

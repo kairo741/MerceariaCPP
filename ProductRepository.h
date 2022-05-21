@@ -1,8 +1,7 @@
-#ifndef _market_customer_repository_h_
-#define _market_customer_repository_h_
+#ifndef _market_product_repository_h_
+#define _market_product_repository_h_
 
 #include "Product.h"
-#include <stdio.h>
 
 class ProductRepository {
 private:

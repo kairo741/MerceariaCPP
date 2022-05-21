@@ -3,14 +3,12 @@
 
 #include "Util.h"
 
-//using namespace Util;
-
 class Product {
 private:
-    int id{};
-    char name[100]{};
-    double price{};
-    int quantity{};
+    int id;
+    char name[100];
+    double price;
+    int quantity;
 public:
     explicit Product() = default;
 

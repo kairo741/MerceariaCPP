@@ -1,9 +1,7 @@
 #include "ProductController.h"
 #include "Product.h"
-#include "Util.h"
 #include "ProductRepository.h"
 #include <iostream>
-#include <string.h>
 
 int ProductController::menu() {
     int opcao;

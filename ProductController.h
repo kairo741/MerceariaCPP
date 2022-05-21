@@ -1,8 +1,7 @@
-#ifndef _market_customer_controller_h_
-#define _market_customer_controller_h_
+#ifndef _market_product_controller_h_
+#define _market_product_controller_h_
 
 #include "Product.h"
-#include "Util.h"
 #include "ProductRepository.h"
 
 class ProductController {

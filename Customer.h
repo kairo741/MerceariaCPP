@@ -1,8 +1,6 @@
 #ifndef _market_customer_h_
 #define _market_customer_h_
 
-#include "Util.h"
-#include <string.h>
 class Customer {
 private:
     int id;

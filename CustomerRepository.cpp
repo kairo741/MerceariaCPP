@@ -1,4 +1,6 @@
 #include "CustomerRepository.h"
+#include "Util.h"
+#include <stdio.h>
 
 void CustomerRepository::readCustomers(){
     FILE *filePointer;

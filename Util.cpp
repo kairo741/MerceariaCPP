@@ -1,9 +1,5 @@
 #include <Util.h>
-#include <stdio.h>
-#include <algorithm>
 
-#define linhasDeCima "\n╭──────────────────────────╮\n"
-#define linhasDeBaixo "\n╰──────────────────────────╯\n"
 #define upLines "\n╭──────────────────────────╮\n"
 #define underLines "\n╰──────────────────────────╯\n"
 
