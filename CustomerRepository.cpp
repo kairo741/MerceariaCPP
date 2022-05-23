@@ -19,7 +19,7 @@ void CustomerRepository::read(){
         Util::getUpLines();
         printf("   Id: %d\n", buffer.getId());
         printf("   Nome: %s\n", buffer.getName());
-        printf("   Total Gasto: %f.2", buffer.getTotalSpent());
+        printf("   Total Gasto: %.2f", buffer.getTotalSpent());
         Util::getUnderLines();
     }
 

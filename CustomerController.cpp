@@ -18,11 +18,21 @@ int CustomerController::menu(){
 }
 void CustomerController::list(){
     customerRepository.read();
-    Util::enterToContinue();
 }
+
 void CustomerController::create(){}
 void CustomerController::update(){}
-void CustomerController::remove(){}
+
+void CustomerController::remove(){
+    int id;
+
+    list();
+    printf("\nPara excluir, selecione o ID do cliente: ");
+
+
+    std::cin >> id;
+    customerRepository.replaceOrDelete(customerRepository.getById(id), true);
+}
 
 // void mainCustomerMenu()
 // {
