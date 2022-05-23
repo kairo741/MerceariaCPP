@@ -34,7 +34,14 @@ void CustomerController::list(){
     customerRepository.read();
 }
 
-void CustomerController::create(){}
+void CustomerController::create(){
+    Customer c = makeCustomer();
+
+    c.setId(Util::getNextId());
+
+    customerRepository.write(c);
+
+}
 
 void CustomerController::update(){
     int id;
