@@ -7,6 +7,20 @@ CustomerController::CustomerController(CustomerRepository _customerRepository) {
     customerRepository = _customerRepository;
 };
 
+Customer makeCustomer(){
+
+    char name[50];
+    double totalSpent=0;
+
+    printf("\nNome do Cliente: ");
+    scanf("%s",&name);
+
+    printf("\nTotal Gasto do Cliente: ");
+    scanf("%lf",&totalSpent);
+
+    return Customer(0,name,totalSpent);
+}
+
 int CustomerController::menu(){
     int option;
 
@@ -21,7 +35,19 @@ void CustomerController::list(){
 }
 
 void CustomerController::create(){}
-void CustomerController::update(){}
+
+void CustomerController::update(){
+    int id;
+
+    list();
+    printf("\nPara alterar, selecione o ID do cliente: ");
+
+    std::cin >> id;
+
+    Customer c = makeCustomer();
+    c.setId(customerRepository.getById(id).getId());
+    customerRepository.replaceOrDelete(c);
+}
 
 void CustomerController::remove(){
     int id;
