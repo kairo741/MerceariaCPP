@@ -6,31 +6,52 @@
 #include <iostream>
 
 #include "CustomerRepository.h"
+#include "CustomerController.h"
 #include "ProductRepository.h"
-#include "Product.h"
-#include "Customer.h"
+#include "ProductController.h"
 #include "SaleController.h"
 
 
+int mainMenu(){
+
+    int opcao;
+
+    printf("\n===Mercearia C++===\n\n1. Cliente\n2. Produto\n3. Venda\n0. Sair\n\nDigite uma opção: ");
+
+    std::cin >> opcao;
+    return opcao;
+}
 
 int main(){
     #ifdef _WIN32
     SetConsoleOutputCP(65001);
     #endif
 
-    Customer c = Customer(1, "nome", 20.0);
-    Product p = Product(2, "nome produto", 20.0, 200);
-
     CustomerRepository cr = CustomerRepository();
     ProductRepository pr = ProductRepository();
-
-    pr.write(p);
-    // cr.write(c);
-
+    CustomerController cc = CustomerController(cr);
+    ProductController pc = ProductController(pr);
     SaleController sc = SaleController(cr, pr);
 
-    sc.makeSale();
-    
+    while(true){
+
+
+        switch(mainMenu()){
+            case 1:
+                cc.menu();
+                break;
+            case 2:
+                pc,menu();
+                break;
+            case 3:
+                sc.menu();
+                break;
+
+            case 0:
+                break;
+        }
+
+    }
 
     return 0;
 }
