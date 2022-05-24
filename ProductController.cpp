@@ -27,8 +27,16 @@ void ProductController::create() {
 }
 
 void ProductController::update() {
-    // todo - receber o produto que será atualizado/substituido por parâmetro
-    //productRepository.replaceOrDelete(this->newProduct());
+    int id;
+
+    list();
+    printf("\n Para alterar, selecione o ID do cliente: ");
+
+    std::cin >> id;
+
+    Product p = makeProduct();
+    p.setId(productRepository.getById(id).getId());
+    productRepository.replaceOrDelete(p);
 }
 
 void ProductController::remove() {
