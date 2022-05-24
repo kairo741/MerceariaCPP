@@ -13,12 +13,12 @@
 
 
 int mainMenu(){
-
     int opcao;
 
     printf("\n===Mercearia C++===\n\n1. Cliente\n2. Produto\n3. Venda\n0. Sair\n\nDigite uma opção: ");
-
     std::cin >> opcao;
+    
+    Util::clearTerminal();
     return opcao;
 }
 
@@ -35,11 +35,11 @@ int main(){
     SaleController saleController = SaleController(customerRepository, productRepository);
 
     while(true){
+        Util::clearTerminal();
 
         switch(mainMenu()){
             case 1:
-                switch (customerController.menu())
-                {
+                switch (customerController.menu()){
                     case 1:
                         customerController.list();
                         break;
@@ -55,10 +55,11 @@ int main(){
                     case 0:
                         break;
                 }
+                Util::enterToContinue();
                 break;
+
             case 2:
-                switch (productController.menu())
-                {
+                switch (productController.menu()){
                 case 1:
                     productController.list();
                     break;
@@ -74,10 +75,11 @@ int main(){
                 case 0:
                     break;
                 }
+                Util::enterToContinue();
                 break;
+
             case 3:
-                switch (saleController.menu())
-                {
+                switch (saleController.menu()){
                 case 1:
                     saleController.makeSale();
                     break;
@@ -87,13 +89,14 @@ int main(){
                 case 0:
                     break;
                 }
+                Util::enterToContinue();
                 break;
 
             case 0:
+                goto while_exit;
                 break;
         }
-
     }
-
+    while_exit:;
     return 0;
 }

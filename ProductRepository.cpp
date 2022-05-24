@@ -20,7 +20,7 @@ void ProductRepository::read() {
         printf("   Id: %d\n", buffer.getId());
         printf("   Nome: %s\n", buffer.getName());
         printf("   Preço: %.2f\n", buffer.getPrice());
-        printf("   Quantidade: %.2f", buffer.getQuantity());
+        printf("   Quantidade: %d", buffer.getQuantity());
         Util::getUnderLines();
     }
 
