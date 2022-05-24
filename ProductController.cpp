@@ -23,12 +23,12 @@ void ProductController::list() {
 }
 
 void ProductController::create() {
-    productRepository.write(this->newProduct());
+    //productRepository.write(this->newProduct());
 }
 
 void ProductController::update() {
     // todo - receber o produto que será atualizado/substituido por parâmetro
-    productRepository.replaceOrDelete(this->newProduct());
+    //productRepository.replaceOrDelete(this->newProduct());
 }
 
 void ProductController::remove() {
@@ -41,26 +41,23 @@ void ProductController::remove() {
     productRepository.replaceOrDelete(productRepository.getById(id), true);
 }
 
-Product ProductController::newProduct() {
-    Product product{};
+Product makeProduct()
+{
 
-    product.setId(Util::getNextId());
-    printf("Insira o nome do produto: ");
+    char name[100];
+    double price;
+    int quantity;
 
-    char *productName = nullptr;
-    scanf("%c", productName);
-    product.setName(productName);
+    printf("\n Nome do Produto: ");
+    scanf("%s", &name);
 
-    printf("Insira o preço: ");
-    double price = 0;
-    scanf("%d", price);
-    product.setPrice(price);
+    printf("\n Nome do Produto: ");
+    scanf("%lf", &price);
 
-    printf("Insira a quantidade: ");
-    int quantity = 0;
-    scanf("%d", quantity);
-    product.setQuantity(quantity);
-    return product;
+    printf("\n Nome do Produto: ");
+    scanf("%d", &quantity);
+
+    return Product(0, name, price, quantity);
 }
 
 // void mainProductMenu()
