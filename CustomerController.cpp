@@ -70,32 +70,3 @@ void CustomerController::remove(){
     std::cin >> id;
     customerRepository.replaceOrDelete(customerRepository.getById(id), true);
 }
-
-// void mainCustomerMenu()
-// {
-//     // switch (menu())
-//     // {
-//     // case 1:
-//     //     showCustomer();
-//     //     Util::enterToContinue();
-//     //     break;
-
-//     // case 2:
-//     //     registerCustomer();
-//     //     Util::enterToContinue();
-//     //     break;
-
-//     // case 3:
-//     //     updateCustomer();
-//     //     Util::enterToContinue();
-//     //     break;
-
-//     // case 4:
-//     //     deleteCustomer();
-//     //     Util::enterToContinue();
-//     //     break;
-
-//     // default:
-//     //     break;
-//     // }
-// }

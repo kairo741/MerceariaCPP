@@ -3,6 +3,26 @@
 #include "ProductRepository.h"
 #include <iostream>
 
+
+Product makeProduct()
+{
+
+    char name[100];
+    double price;
+    int quantity;
+
+    printf("\n Nome do Produto: ");
+    scanf("%s", &name);
+
+    printf("\n Nome do Produto: ");
+    scanf("%lf", &price);
+
+    printf("\n Nome do Produto: ");
+    scanf("%d", &quantity);
+
+    return Product(0, name, price, quantity);
+}
+
 int ProductController::menu() {
     int opcao;
 
@@ -52,51 +72,3 @@ void ProductController::remove() {
     std::cin >> id;
     productRepository.replaceOrDelete(productRepository.getById(id), true);
 }
-
-Product makeProduct()
-{
-
-    char name[100];
-    double price;
-    int quantity;
-
-    printf("\n Nome do Produto: ");
-    scanf("%s", &name);
-
-    printf("\n Nome do Produto: ");
-    scanf("%lf", &price);
-
-    printf("\n Nome do Produto: ");
-    scanf("%d", &quantity);
-
-    return Product(0, name, price, quantity);
-}
-
-// void mainProductMenu()
-// {
-//     // switch (menu())
-//     // {
-//     // case 1:
-//     //     showProduct();
-//     //     Util::enterToContinue();
-//     //     break;
-
-//     // case 2:
-//     //     registerProduct();
-//     //     Util::enterToContinue();
-//     //     break;
-
-//     // case 3:
-//     //     updateProduct();
-//     //     Util::enterToContinue();
-//     //     break;
-
-//     // case 4:
-//     //     deleteProduct();
-//     //     Util::enterToContinue();
-//     //     break;
-
-//     // default:
-//     //     break;
-//     // }
-// }
