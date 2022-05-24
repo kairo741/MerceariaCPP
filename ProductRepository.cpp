@@ -16,6 +16,12 @@ void ProductRepository::read() {
             break;
         }
         // todo - printar produto aqui
+        Util::getUpLines();
+        printf("   Id: %d\n", buffer.getId());
+        printf("   Nome: %s\n", buffer.getName());
+        printf("   Preço: %.2f", buffer.getPrice());
+        printf("   Quantidade: %.2f", buffer.getQuantity());
+        Util::getUnderLines();
     }
 
     fclose(filePointer);

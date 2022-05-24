@@ -10,9 +10,7 @@ private:
 public:
     explicit ProductController(ProductRepository _productRepository);
 
-    static int menu();
-
-    Product newProduct();
+    int menu();
 
     void list();
 

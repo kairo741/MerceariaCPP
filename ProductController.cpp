@@ -31,7 +31,15 @@ void ProductController::update() {
     productRepository.replaceOrDelete(this->newProduct());
 }
 
-void ProductController::remove() {}
+void ProductController::remove() {
+    int id;
+
+    list();
+    printf("\nPara excluir, selecione o ID do produto: ");
+
+    std::cin >> id;
+    productRepository.replaceOrDelete(productRepository.getById(id), true);
+}
 
 Product ProductController::newProduct() {
     Product product{};
