@@ -27,62 +27,62 @@ int main(){
     SetConsoleOutputCP(65001);
     #endif
 
-    CustomerRepository cr = CustomerRepository();
-    ProductRepository pr = ProductRepository();
-    CustomerController cc = CustomerController(cr);
-    ProductController pc = ProductController(pr);
-    SaleController sc = SaleController(cr, pr);
+    CustomerRepository customerRepository = CustomerRepository();
+    ProductRepository productRepository = ProductRepository();
+    
+    CustomerController customerController = CustomerController(customerRepository);
+    ProductController productController = ProductController(productRepository);
+    SaleController saleController = SaleController(customerRepository, productRepository);
 
     while(true){
 
-
         switch(mainMenu()){
             case 1:
-                switch (cc.menu())
+                switch (customerController.menu())
                 {
                     case 1:
-                        cc.list();
+                        customerController.list();
                         break;
                     case 2:
-                        cc.create();
+                        customerController.create();
                         break;
                     case 3:
-                        cc.update();
+                        customerController.update();
                         break;
                     case 4:
-                        cc.remove();
+                        customerController.remove();
                         break;
                     case 0:
                         break;
                 }
                 break;
             case 2:
-                switch (pc.menu())
+                switch (productController.menu())
                 {
                 case 1:
-                    pc.list();
+                    productController.list();
                     break;
                 case 2:
-                    pc.create();
+                    productController.create();
                     break;
                 case 3:
-                    pc.update();
+                    productController.update();
                     break;
                 case 4:
-                    pc.remove();
+                    productController.remove();
                     break;
                 case 0:
                     break;
                 }
                 break;
             case 3:
-                switch (sc.menu())
+                switch (saleController.menu())
                 {
                 case 1:
-                    sc.makeSale();
+                    saleController.makeSale();
                     break;
                 case 2:
-                    sc.showTotalSpentPerCustomer();
+                    saleController.showTotalSpentPerCustomer();
                     break;
                 case 0:
                     break;

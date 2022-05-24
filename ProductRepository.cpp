@@ -19,7 +19,7 @@ void ProductRepository::read() {
         Util::getUpLines();
         printf("   Id: %d\n", buffer.getId());
         printf("   Nome: %s\n", buffer.getName());
-        printf("   Preço: %.2f", buffer.getPrice());
+        printf("   Preço: %.2f\n", buffer.getPrice());
         printf("   Quantidade: %.2f", buffer.getQuantity());
         Util::getUnderLines();
     }
@@ -54,15 +54,15 @@ void ProductRepository::replaceOrDelete(Product product, bool removeData) {
             break;
         }
 
-        // descomentar quando estiver definido os getters e setters
-        // if (buffer.id == product.id){
-        //     if (!removeData){
-        //         fwrite(&product, 1, sizeof(product), newFilePointer);
-        //     }
-        // }
-        // else{
-        //     fwrite(&buffer, 1, sizeof(buffer), newFilePointer);
-        // }
+        
+        if (buffer.getId() == product.getId()){
+            if (!removeData){
+                fwrite(&product, 1, sizeof(product), newFilePointer);
+            }
+        }
+        else{
+            fwrite(&buffer, 1, sizeof(buffer), newFilePointer);
+        }
     }
 
     fclose(filePointer);

@@ -15,7 +15,6 @@ int SaleController::menu()
     printf("\n===Vendas===\n\n1. Realizar venda\n2. Visualizar Gastos Clientes\n0. Voltar\n\nDigite uma opção: ");
 
     std::cin >> opcao;
-    Util::clearTerminal();
     return opcao;
 }
 
@@ -27,12 +26,11 @@ void SaleController::makeSale(){
     customerRepository.read();
     printf("Digite o ID de um cliente para realizar a venda: ");
     scanf("%d", &customerId);
-
     Customer c = customerRepository.getById(customerId);
 
+    productRepository.read();
     printf("Digite o ID do produto: ");
     scanf("%d", &productId);
-
     Product p = productRepository.getById(productId);
 
     printf("Informe a quantidade: ");
@@ -50,11 +48,8 @@ void SaleController::makeSale(){
         customerRepository.replaceOrDelete(c);
         printf("\nVenda realizada");
     }
-
-    Util::enterToContinue();
 }
 
 void SaleController::showTotalSpentPerCustomer(){
     customerRepository.read();
-    Util::enterToContinue();
 }

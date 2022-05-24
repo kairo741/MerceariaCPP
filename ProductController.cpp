@@ -4,37 +4,35 @@
 #include <iostream>
 
 
-Product makeProduct()
-{
-
-    char name[100];
-    double price;
-    int quantity;
-
-    printf("\n Nome do Produto: ");
-    scanf("%s", &name);
-
-    printf("\n Nome do Produto: ");
-    scanf("%lf", &price);
-
-    printf("\n Nome do Produto: ");
-    scanf("%d", &quantity);
-
-    return Product(0, name, price, quantity);
-}
-
 int ProductController::menu() {
     int opcao;
 
     printf("\n===Produto===\n\n1. Listar Produto\n2. Cadastrar Produto\n3. Editar Produto\n4. Excluir Produto\n0. Voltar\n\nDigite uma opção: ");
 
     std::cin >> opcao;
-    Util::clearTerminal();
+
     return opcao;
 }
 
 ProductController::ProductController(ProductRepository _productRepository) {
     productRepository = _productRepository;
+}
+
+Product makeProduct(){
+    char name[100];
+    double price;
+    int quantity;
+
+    printf("\nNome do Produto: ");
+    scanf("%s", &name);
+
+    printf("\nPreço do Produto: ");
+    scanf("%lf", &price);
+
+    printf("\nQuantidade do Produto: ");
+    scanf("%d", &quantity);
+
+    return Product(0, name, price, quantity);
 }
 
 
