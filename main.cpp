@@ -57,10 +57,36 @@ int main(){
                 }
                 break;
             case 2:
-                pc.menu();
+                switch (pc.menu())
+                {
+                case 1:
+                    pc.list();
+                    break;
+                case 2:
+                    pc.create();
+                    break;
+                case 3:
+                    pc.update();
+                    break;
+                case 4:
+                    pc.remove();
+                    break;
+                case 0:
+                    break;
+                }
                 break;
             case 3:
-                sc.menu();
+                switch (sc.menu())
+                {
+                case 1:
+                    sc.makeSale();
+                    break;
+                case 2:
+                    sc.showTotalSpentPerCustomer();
+                    break;
+                case 0:
+                    break;
+                }
                 break;
 
             case 0:
