@@ -23,7 +23,11 @@ void ProductController::list() {
 }
 
 void ProductController::create() {
-    //productRepository.write(this->newProduct());
+    Product p = makeProduct();
+
+    p.setId(Util::getNextId());
+
+    productRepository.write(p);
 }
 
 void ProductController::update() {
