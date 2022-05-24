@@ -11,6 +11,8 @@ private:
 public:
     explicit SaleController(CustomerRepository _customerRepository, ProductRepository _productRepository);
 
+    int menu();
+
     void makeSale();
     void showTotalSpentPerCustomer();
 };

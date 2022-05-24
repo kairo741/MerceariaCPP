@@ -38,10 +38,26 @@ int main(){
 
         switch(mainMenu()){
             case 1:
-                cc.menu();
+                switch (cc.menu())
+                {
+                    case 1:
+                        cc.list();
+                        break;
+                    case 2:
+                        cc.create();
+                        break;
+                    case 3:
+                        cc.update();
+                        break;
+                    case 4:
+                        cc.remove();
+                        break;
+                    case 0:
+                        break;
+                }
                 break;
             case 2:
-                pc,menu();
+                pc.menu();
                 break;
             case 3:
                 sc.menu();

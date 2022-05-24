@@ -1,10 +1,22 @@
 #include "SaleController.h"
 #include "Util.h"
 #include <stdio.h>
+#include <iostream>
 
 SaleController::SaleController(CustomerRepository _customerRepository, ProductRepository _productRepository){
     customerRepository = _customerRepository;
     productRepository = _productRepository;
+}
+
+int SaleController::menu()
+{
+    int opcao;
+
+    printf("\n===Vendas===\n\n1. Realizar venda\n2. Visualizar Gastos Clientes\n0. Voltar\n\nDigite uma opção: ");
+
+    std::cin >> opcao;
+    Util::clearTerminal();
+    return opcao;
 }
 
 void SaleController::makeSale(){

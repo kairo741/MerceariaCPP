@@ -7,6 +7,19 @@ CustomerController::CustomerController(CustomerRepository _customerRepository) {
     customerRepository = _customerRepository;
 };
 
+int CustomerController::menu()
+{
+    int option;
+
+    printf("\n===Cliente===\n\n1. Listar Cliente\n2. Cadastrar Cliente\n3. Editar Cliente\n4. Excluir Cliente\n0. Voltar\n\nDigite uma opção: ");
+
+    std::cin >> option;
+
+    
+
+    return option;
+}
+
 Customer makeCustomer(){
 
     char name[50];
@@ -21,15 +34,6 @@ Customer makeCustomer(){
     return Customer(0,name,totalSpent);
 }
 
-int CustomerController::menu(){
-    int option;
-
-    printf("\n===Cliente===\n\n1. Listar Cliente\n2. Cadastrar Cliente\n3. Editar Cliente\n4. Excluir Cliente\n0. Voltar\n\nDigite uma opção: ");
-
-    std::cin >> option;
-
-    return option;
-}
 void CustomerController::list(){
     customerRepository.read();
 }
